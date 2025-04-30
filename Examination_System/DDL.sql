@@ -1,3 +1,4 @@
+use Examination;
 create table Users
 (
 	UserId int identity(1,1),
@@ -21,8 +22,6 @@ create table Users
 				)
 
 ) on users_FG
-
-
 
 create table Student
 (
@@ -194,8 +193,8 @@ create table InstructorTeachCourse
 	TeachYear date,
 
 	constraint PK_InstructorTeachCourse primary key (InstructorId_FK,CourseId_FK,Class),
-	constraint FK_StudentTakeCourse_StudentId foreign key(InstructorId_FK) references Instructor(InstructorId),
-	constraint FK_StudentTakeCourse_CourseId foreign key(CourseId_FK) references Course(CourseId)
+	constraint FK_InstructorTeachCourse_InstructorId foreign key(InstructorId_FK) references Instructor(InstructorId),
+	constraint FK_InstructorTeachCourse_CourseId foreign key(CourseId_FK) references Course(CourseId)
 
 ) on material_FG
 
@@ -204,9 +203,9 @@ create table TrackCourse
 	TrackId_FK int,
 	CourseId_FK int,
 
-	constraint PK_InstructorTeachCourse primary key (TrackId_FK,CourseId_FK),
-	constraint FK_StudentTakeCourse_StudentId foreign key(TrackId_FK) references Track(TrackId),
-	constraint FK_StudentTakeCourse_CourseId foreign key(CourseId_FK) references Course(CourseId)
+	constraint PK_TrackCourse primary key (TrackId_FK,CourseId_FK),
+	constraint FK_TrackCourse_TrackId foreign key(TrackId_FK) references Track(TrackId),
+	constraint FK_TrackCourse_CourseId foreign key(CourseId_FK) references Course(CourseId)
 
 ) on material_FG
 
@@ -230,7 +229,8 @@ create table StudentExam
 	ExamId_FK int,
 	ExamTotalResult int,
 
-	constraint PK_StudentAnswer primary key (StudentId_FK,ExamId_FK),
-	constraint FK_StudentAnswer_StudentId foreign key(StudentId_FK) references Student (StudentId),
-	constraint FK_StudentAnswer_ExamId foreign key(ExamId_FK) references Exam(ExamId)
+	constraint PK_StudentExam primary key (StudentId_FK,ExamId_FK),
+	constraint FK_StudentExam_StudentId foreign key(StudentId_FK) references Student (StudentId),
+	constraint FK_StudentExam_ExamId foreign key(ExamId_FK) references Exam(ExamId)
 ) on material_FG
+
