@@ -16,9 +16,7 @@ create table Users
 	constraint CK_Password check (len (Password_) >= 6),
 	constraint CK_Role check (Role_ in ('student' , 'instructor', 'training manager')),
 	constraint CK_Gender check (Gender in ('m' , 'f')),
-	CONSTRAINT CK_Email CHECK (
-				Email LIKE '[A-Za-z][A-Za-z0-9]*@[A-Za-z0-9]%.[A-Za-z][A-Za-z][A-Za-z]'
-				)
+	CONSTRAINT CK_Email CHECK (Email LIKE '_%@_%._%'				)
 
 ) on users_FG
 
