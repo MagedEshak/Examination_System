@@ -1,3 +1,5 @@
+use Examination;
+
 create table Users
 (
 	UserId int identity(1,1),
@@ -16,10 +18,7 @@ create table Users
 	constraint CK_Password check (len (Password_) >= 6),
 	constraint CK_Role check (Role_ in ('student' , 'instructor', 'training manager')),
 	constraint CK_Gender check (Gender in ('m' , 'f')),
-	CONSTRAINT CK_Email CHECK (
-				Email LIKE '[A-Za-z][A-Za-z0-9]*@[A-Za-z0-9]%.[A-Za-z][A-Za-z][A-Za-z]'
-				)
-
+	CONSTRAINT CK_Email CHECK (Email like '___%@___%.__%')
 ) on users_FG
 
 
@@ -139,21 +138,20 @@ create table Question
 (
 	QuestionId int identity(1,1),
 	QuestionType varchar(30) not null,
-	QuestionText varchar(150) not null,
-	CorrectAnswer varchar(50) not null,
-	Degree smallint default 1,
+	QuestionText varchar(500) not null,
+	CorrectAnswer varchar(255) not null,
 	CourseId_FK int,
 
 	constraint PK_Question primary key (QuestionId),
 	constraint FK_Question_CourseId foreign key(CourseId_FK) references Course (CourseId),
-	constraint CK_Question_Degree check(Degree <= 5),
 	constraint CK_Question_Type check(QuestionType in ('mcq','T/F', 'text'))
 
 ) on material_FG
 
+
 create table QuestionChoice
 (
-	ChoiceText varchar(150) not null,
+	ChoiceText varchar(255) not null,
 	QuestionId_FK int,
 
 	constraint PK_QuestionChoice primary key (ChoiceText,QuestionId_FK),
@@ -172,6 +170,8 @@ create table Exam
 
 	constraint PK_Exam primary key (ExamId),
 	constraint FK_Exam_InstructorId foreign key(InstructorId_FK) references Instructor(InstructorId),
+	constraint CK_ExamType check(ExamType in ('exam' , 'corrective')),
+	constraint CK_EndTime check(EndTime > StartTime)
 ) on material_FG
 
 create table StudentTakeCourse
@@ -193,9 +193,9 @@ create table InstructorTeachCourse
 	Class int,
 	TeachYear date,
 
-	constraint PK_InstructorTeachCourse primary key (InstructorId_FK,CourseId_FK,Class),
-	constraint FK_StudentTakeCourse_StudentId foreign key(InstructorId_FK) references Instructor(InstructorId),
-	constraint FK_StudentTakeCourse_CourseId foreign key(CourseId_FK) references Course(CourseId)
+	constraint PK_InstructorTeachCourse primary key (InstructorId_FK,CourseId_FK,Class,TeachYear),
+	constraint FK_InstructorTeachCourse_InstructorId foreign key(InstructorId_FK) references Instructor(InstructorId),
+	constraint FK_InstructorTeachCourse_CourseId foreign key(CourseId_FK) references Course(CourseId)
 
 ) on material_FG
 
@@ -204,9 +204,9 @@ create table TrackCourse
 	TrackId_FK int,
 	CourseId_FK int,
 
-	constraint PK_InstructorTeachCourse primary key (TrackId_FK,CourseId_FK),
-	constraint FK_StudentTakeCourse_StudentId foreign key(TrackId_FK) references Track(TrackId),
-	constraint FK_StudentTakeCourse_CourseId foreign key(CourseId_FK) references Course(CourseId)
+	constraint PK_TrackCourse primary key (TrackId_FK,CourseId_FK),
+	constraint FK_TrackCourse_TrackId foreign key(TrackId_FK) references Track(TrackId),
+	constraint FK_TrackCourse_CourseId foreign key(CourseId_FK) references Course(CourseId)
 
 ) on material_FG
 
@@ -216,9 +216,9 @@ create table StudentAnswer
 	StudentId_FK int,
 	QuestionId_FK int,
 	ExamId_FK int,
-	StudentAnswer varchar(50),
+	StudentAnswer varchar(255),
 
-	constraint PK_StudentAnswer primary key (StudentId_FK,ExamId_FK ,QuestionId_FK),
+	constraint PK_StudentAnswer primary key (StudentId_FK, ExamId_FK , QuestionId_FK),
 	constraint FK_StudentAnswer_StudentId foreign key(StudentId_FK) references Student (StudentId),
 	constraint FK_StudentAnswer_QuestionId foreign key(QuestionId_FK) references Question(QuestionId),
 	constraint FK_StudentAnswer_ExamId foreign key(ExamId_FK) references Exam(ExamId)
@@ -230,7 +230,19 @@ create table StudentExam
 	ExamId_FK int,
 	ExamTotalResult int,
 
-	constraint PK_StudentAnswer primary key (StudentId_FK,ExamId_FK),
-	constraint FK_StudentAnswer_StudentId foreign key(StudentId_FK) references Student (StudentId),
-	constraint FK_StudentAnswer_ExamId foreign key(ExamId_FK) references Exam(ExamId)
+	constraint PK_StudentExam primary key (StudentId_FK, ExamId_FK),
+	constraint FK_StudentExam_StudentId foreign key(StudentId_FK) references Student (StudentId),
+	constraint FK_StudentExam_ExamId foreign key(ExamId_FK) references Exam(ExamId)
 ) on material_FG
+	
+create table ExamQuestion
+(
+	QuestionId_FK int,
+	ExamId_FK int,
+	QusetionDegree tinyint default 1,
+
+	constraint PK_ExamQuestion primary key (QuestionId_FK, ExamId_FK),
+	constraint FK_ExamQuestion_StudentId foreign key(QuestionId_FK) references Question(QuestionId),
+	constraint FK_ExamQuestion_ExamId foreign key(ExamId_FK) references Exam(ExamId),
+	constraint CK_Question_Degree check(QusetionDegree <= 10)
+) on material_FG	

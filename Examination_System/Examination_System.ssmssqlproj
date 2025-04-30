@@ -3,7 +3,22 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="LAPTOP-CMR1M1SF\SQLDEV:LAPTOP-CMR1M1SF\maged">
+        <ConnectionNode Name="ENG_ALI:ENG_ALI\aliga">
+          <Created>2025-04-30T01:27:32.5603679+03:00</Created>
+          <Type>SQL</Type>
+          <Server>ENG_ALI</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <TrustServerCertificate>True</TrustServerCertificate>
+          <HostNameInServerCertificate />
+          <EncryptionOption>True</EncryptionOption>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="LAPTOP-CMR1M1SF\SQLDEV:ENG_ALI\aliga">
           <Created>2025-04-30T00:25:07.5406754+03:00</Created>
           <Type>SQL</Type>
           <Server>LAPTOP-CMR1M1SF\SQLDEV</Server>
@@ -23,14 +38,14 @@
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="Database_Creation.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-CMR1M1SF\SQLDEV:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>LAPTOP-CMR1M1SF\SQLDEV</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Database_Creation.sql</FullPath>
         </FileNode>
         <FileNode Name="DDL.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-CMR1M1SF\SQLDEV:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>LAPTOP-CMR1M1SF\SQLDEV</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>DDL.sql</FullPath>
         </FileNode>
