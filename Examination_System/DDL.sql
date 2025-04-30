@@ -18,7 +18,8 @@ create table Users
 	constraint CK_Password check (len (Password_) >= 6),
 	constraint CK_Role check (Role_ in ('student' , 'instructor', 'training manager')),
 	constraint CK_Gender check (Gender in ('m' , 'f')),
-	CONSTRAINT CK_Email CHECK (Email like '___%@___%.__%')
+	CONSTRAINT CK_Email CHECK (Email LIKE '_%@_%._%'				)
+
 ) on users_FG
 
 
@@ -29,9 +30,9 @@ create table Student
 	City varchar(15),
 	Street varchar(20),
 	BuildingNumber SmallInt,
-	UserId_FK int 
+	UserId_FK int
 
-	constraint PK_StudentId primary key (StudentId),
+		constraint PK_StudentId primary key (StudentId),
 	constraint FK_Student_UserId foreign key(UserId_FK) references Users (UserId),
 
 ) on users_FG
@@ -43,7 +44,7 @@ create table Instructor
 	HireDate Date,
 	UserId_FK int
 
-	constraint PK_InstructorId primary key (InstructorId),
+		constraint PK_InstructorId primary key (InstructorId),
 	constraint FK_Instructor_UserId foreign key(UserId_FK) references Users (UserId),
 
 
@@ -93,7 +94,8 @@ create table Track
 
 ) on branch_FG
 
-create table Intake(
+create table Intake
+(
 	IntakeId int identity(1,1),
 	Description varchar(100),
 	StartDate date not null,
@@ -103,7 +105,8 @@ create table Intake(
 	constraint CK_EndDate check(EndDate > StartDate)
 ) on branch_FG
 
-create table StudentTrackIntake(
+create table StudentTrackIntake
+(
 	StudentId_FK int,
 	TrackId_FK int,
 	IntakeId_FK int,
@@ -144,6 +147,7 @@ create table Question
 
 	constraint PK_Question primary key (QuestionId),
 	constraint FK_Question_CourseId foreign key(CourseId_FK) references Course (CourseId),
+	
 	constraint CK_Question_Type check(QuestionType in ('mcq','T/F', 'text'))
 
 ) on material_FG
@@ -230,11 +234,12 @@ create table StudentExam
 	ExamId_FK int,
 	ExamTotalResult int,
 
-	constraint PK_StudentExam primary key (StudentId_FK, ExamId_FK),
+	constraint PK_StudentExam primary key (StudentId_FK,ExamId_FK),
 	constraint FK_StudentExam_StudentId foreign key(StudentId_FK) references Student (StudentId),
 	constraint FK_StudentExam_ExamId foreign key(ExamId_FK) references Exam(ExamId)
 ) on material_FG
-	
+
+
 create table ExamQuestion
 (
 	QuestionId_FK int,
