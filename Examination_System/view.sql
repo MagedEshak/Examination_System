@@ -19,6 +19,7 @@ join Course C on ITC.CourseId_FK=C.CourseId
 
 where C.CourseId= ITC.CourseId_FK and I.InstructorId=ITC.InstructorId_FK
 
+
 select * from  Instructorcourse_v 
 
 ------------
@@ -37,6 +38,7 @@ join Question Q on EQ.QuestionId_FK=Q.QuestionId
 join Course C on Q.CourseId_FK=C.CourseId
 
 where I.InstructorId =E.InstructorId_FK
+
 
 
 select * from InstructorExam_v 
@@ -64,4 +66,3 @@ join Course C on E.ExamId in(
 
 select * from  StudentExam_v
 
-	
