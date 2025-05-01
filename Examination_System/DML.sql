@@ -110,6 +110,7 @@ INSERT INTO StudentTrackIntake (StudentId_FK, TrackId_FK, IntakeId_FK, Enrollmen
 (79, 19, 9, '2025-12-15'),
 (80, 20, 10, '2026-03-15'),
 (81, 21, 11, '2026-05-15'),
+(82, 22, 12, '2026-08-15')
 (82, 22, 12, '2026-08-15');
 
 
