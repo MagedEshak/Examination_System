@@ -1,3 +1,5 @@
+use Examination;
+
 create table Users
 (
 	UserId int identity(1,1),
@@ -139,8 +141,8 @@ create table Question
 (
 	QuestionId int identity(1,1),
 	QuestionType varchar(30) not null,
-	QuestionText varchar(150) not null,
-	CorrectAnswer varchar(50) not null,
+	QuestionText varchar(500) not null,
+	CorrectAnswer varchar(255) not null,
 	CourseId_FK int,
 
 	constraint PK_Question primary key (QuestionId),
@@ -150,9 +152,10 @@ create table Question
 
 ) on material_FG
 
+
 create table QuestionChoice
 (
-	ChoiceText varchar(150) not null,
+	ChoiceText varchar(255) not null,
 	QuestionId_FK int,
 
 	constraint PK_QuestionChoice primary key (ChoiceText,QuestionId_FK),
@@ -171,6 +174,8 @@ create table Exam
 
 	constraint PK_Exam primary key (ExamId),
 	constraint FK_Exam_InstructorId foreign key(InstructorId_FK) references Instructor(InstructorId),
+	constraint CK_ExamType check(ExamType in ('exam' , 'corrective')),
+	constraint CK_EndTime check(EndTime > StartTime)
 ) on material_FG
 
 create table StudentTakeCourse
@@ -215,9 +220,9 @@ create table StudentAnswer
 	StudentId_FK int,
 	QuestionId_FK int,
 	ExamId_FK int,
-	StudentAnswer varchar(50),
+	StudentAnswer varchar(255),
 
-	constraint PK_StudentAnswer primary key (StudentId_FK,ExamId_FK ,QuestionId_FK),
+	constraint PK_StudentAnswer primary key (StudentId_FK, ExamId_FK , QuestionId_FK),
 	constraint FK_StudentAnswer_StudentId foreign key(StudentId_FK) references Student (StudentId),
 	constraint FK_StudentAnswer_QuestionId foreign key(QuestionId_FK) references Question(QuestionId),
 	constraint FK_StudentAnswer_ExamId foreign key(ExamId_FK) references Exam(ExamId)
