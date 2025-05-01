@@ -1,14 +1,15 @@
 
 
 ---------view
--------Instructor exam overview.                      view Exams, Students, Courses 
+-------Instructor exam overview.                   view Exams, Students, Courses 
 
 use Examination
 GO
-create view Instructorcourse_v 
+create or alter view Instructorcourse_v 
 as
 select 
-concat(U.FirstName ,' ',U.LastName) as 'Instructor Name', C.CourseName
+concat(U.FirstName ,' ',U.LastName) as 'Instructor Name', C.CourseName,
+ITC.Class as 'Class Number', ITC.TeachYear as 'Teach Year'
 
 
 from InstructorTeachCourse ITC
@@ -16,6 +17,7 @@ from InstructorTeachCourse ITC
 join Instructor I on ITC.InstructorId_FK= I.InstructorId
 join Users U on I.UserId_FK=U.UserId
 join Course C on ITC.CourseId_FK=C.CourseId
+
 
 where C.CourseId= ITC.CourseId_FK and I.InstructorId=ITC.InstructorId_FK
 
@@ -36,14 +38,9 @@ join Users U on I.UserId_FK=U.UserId
 join ExamQuestion EQ on EQ.ExamId_FK=E.ExamId
 join Question Q on EQ.QuestionId_FK=Q.QuestionId
 join Course C on Q.CourseId_FK=C.CourseId
-
 where I.InstructorId =E.InstructorId_FK
 
-
-
 select * from InstructorExam_v 
-
-
 
 -------------------
 go
