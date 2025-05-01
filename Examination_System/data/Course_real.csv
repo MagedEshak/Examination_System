@@ -1,0 +1,11 @@
+CourseId,CourseName,CRS_Description,MinDegree,MaxDegree
+90,ASP.NET,Introduction to ASP.NET,0,100
+91,SQL Server,Introduction to SQL Server,0,100
+92,Python Programming,Introduction to Python Programming,0,100
+93,Java Fundamentals,Introduction to Java Fundamentals,0,100
+94,Network Security,Introduction to Network Security,0,100
+95,Web Design,Introduction to Web Design,0,100
+96,Data Mining,Introduction to Data Mining,0,100
+97,Machine Learning,Introduction to Machine Learning,0,100
+98,Software Engineering,Introduction to Software Engineering,0,100
+99,Cloud Computing,Introduction to Cloud Computing,0,100

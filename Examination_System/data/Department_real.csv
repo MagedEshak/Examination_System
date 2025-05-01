@@ -1,0 +1,3 @@
+DeptId,DeptName,BranchId_FK
+30,Computer Science,10
+31,Information Systems,20
