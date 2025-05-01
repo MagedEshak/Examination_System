@@ -3,48 +3,66 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="LAPTOP-CMR1M1SF\SQLDEV:LAPTOP-CMR1M1SF\maged">
-          <Created>2025-04-30T00:25:07.5406754+03:00</Created>
+        <ConnectionNode Name="DESKTOP-PE51131:DESKTOP-PE51131\EL">
+          <Created>2025-04-30T22:59:52.330587+03:00</Created>
           <Type>SQL</Type>
-          <Server>LAPTOP-CMR1M1SF\SQLDEV</Server>
+          <Server>DESKTOP-PE51131</Server>
           <UserName />
           <Authentication>Windows Authentication</Authentication>
           <InitialDB />
           <LoginTimeout>30</LoginTimeout>
           <TrustServerCertificate>True</TrustServerCertificate>
           <HostNameInServerCertificate />
-          <EncryptionOption>False</EncryptionOption>
+          <EncryptionOption>True</EncryptionOption>
           <ExecutionTimeout>0</ExecutionTimeout>
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
-          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+          <ApplicationName />
         </ConnectionNode>
       </Items>
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="Database_Creation.sql">
+<<<<<<< HEAD
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PE51131:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-PE51131</AssociatedConnSrvName>
+=======
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
+>>>>>>> 6eb256f300dae3adc383631cd89f70cb353bfd1c
           <AssociatedConnUserName />
           <FullPath>Database_Creation.sql</FullPath>
         </FileNode>
         <FileNode Name="DDL.sql">
+<<<<<<< HEAD
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PE51131:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-PE51131</AssociatedConnSrvName>
+=======
           <AssociatedConnectionMoniker />
           <AssociatedConnSrvName />
+>>>>>>> 6eb256f300dae3adc383631cd89f70cb353bfd1c
           <AssociatedConnUserName />
           <FullPath>DDL.sql</FullPath>
         </FileNode>
         <FileNode Name="DML.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-CMR1M1SF\SQLDEV:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>LAPTOP-CMR1M1SF\SQLDEV</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PE51131:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-PE51131</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>DML.sql</FullPath>
         </FileNode>
+<<<<<<< HEAD
+        <FileNode Name="Proc.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PE51131:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-PE51131</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Proc.sql</FullPath>
+=======
         <FileNode Name="proc.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-CMR1M1SF\SQLDEV:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>LAPTOP-CMR1M1SF\SQLDEV</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>proc.sql</FullPath>
+>>>>>>> 6eb256f300dae3adc383631cd89f70cb353bfd1c
         </FileNode>
       </Items>
     </LogicalFolder>
