@@ -23,8 +23,6 @@ create table Users
 ) on users_FG
 
 
-
-
 create table Student
 (
 	StudentId int identity(1,1),
@@ -60,8 +58,10 @@ create table TrainingManager
 	constraint FK_TrainingManager_UserId foreign key(UserId_FK) references Users (UserId),
 
 )on users_FG
+	
 -----------------------------------------------------------------------------------------------
 --for File Grop "Branch"
+	
 create table Branch
 (
 	BranchId int identity(100,10),
