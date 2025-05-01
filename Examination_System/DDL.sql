@@ -86,7 +86,7 @@ create table Department
 create table Track
 (
 	TrackId int identity(1,1),
-	TrackName varchar(20),
+	TrackName varchar(100),
 	DeptId_FK int,
 
 	constraint PK_TrackId primary key (TrackId),
@@ -126,7 +126,7 @@ create table StudentTrackIntake
 create table Course
 (
 	CourseId int identity(1,1),
-	CourseName varchar(20) not null,
+	CourseName varchar(100) not null,
 	CRS_Description varchar(100),
 	MinDegree smallint default 0,
 	MaxDegree smallint not null,
