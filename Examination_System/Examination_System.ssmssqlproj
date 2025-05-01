@@ -4,7 +4,7 @@
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
         <ConnectionNode Name="DESKTOP-PE51131:DESKTOP-PE51131\EL">
-          <Created>2025-04-30T22:59:52.330587+03:00</Created>
+          <Created>2025-05-01T23:04:12.2484044+03:00</Created>
           <Type>SQL</Type>
           <Server>DESKTOP-PE51131</Server>
           <UserName />
@@ -29,20 +29,20 @@
           <FullPath>Database_Creation.sql</FullPath>
         </FileNode>
         <FileNode Name="DDL.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PE51131:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-PE51131</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>DDL.sql</FullPath>
         </FileNode>
         <FileNode Name="DML.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PE51131:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-PE51131</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>DML.sql</FullPath>
         </FileNode>
         <FileNode Name="Proc.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-PE51131:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-PE51131</AssociatedConnSrvName>
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>Proc.sql</FullPath>
         </FileNode>

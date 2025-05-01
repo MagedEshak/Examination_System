@@ -30,6 +30,8 @@ INSERT INTO Student (City, Street, BuildingNumber, UserId_FK) VALUES
 ('Aswan', 'Kornish', 1, 41),
 ('Luxor', 'Karnak', 4, 43);
 
+
+
 INSERT INTO Instructor (HireDate, UserId_FK) VALUES
 ('2022-08-15', 2),
 ('2023-01-20', 5),

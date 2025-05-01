@@ -12,7 +12,7 @@ on primary
 
 fileGroup users_FG
 (
-	name = 'users',
+	name ='users',
 	fileName = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\users.ndf',
 	size = 10MB,
 	fileGrowth = 2MB,
