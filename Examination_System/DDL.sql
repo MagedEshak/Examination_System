@@ -42,10 +42,9 @@ create table Users
 	constraint CK_Password check (len (Password_) >= 6),
 	constraint CK_Role check (Role_ in ('student' , 'instructor', 'training manager')),
 	constraint CK_Gender check (Gender in ('m' , 'f')),
-	CONSTRAINT CK_Email CHECK (Email LIKE '_%@_%._%'				)
+	CONSTRAINT CK_Email CHECK (Email LIKE '_%@_%._%')
 
 ) on users_FG
-
 
 
 create table Student
@@ -83,8 +82,10 @@ create table TrainingManager
 	constraint FK_TrainingManager_UserId foreign key(UserId_FK) references Users (UserId),
 
 )on users_FG
+	
 -----------------------------------------------------------------------------------------------
 --for File Grop "Branch"
+	
 create table Branch
 (
 	BranchId int identity(100,10),
@@ -110,7 +111,7 @@ create table Department
 create table Track
 (
 	TrackId int identity(1,1),
-	TrackName varchar(20),
+	TrackName varchar(100),
 	DeptId_FK int,
 
 	constraint PK_TrackId primary key (TrackId),
@@ -134,13 +135,12 @@ create table StudentTrackIntake
 	StudentId_FK int,
 	TrackId_FK int,
 	IntakeId_FK int,
-	EnrollmentDate date not null,
+	EnrollmentDate date,
 
-	constraint PK_StudentTrackIntake primary key (StudentId_FK,TrackId_FK,IntakeId_FK),
+	constraint PK_StudentTrackIntake primary key (StudentId_FK,IntakeId_FK,EnrollmentDate),
 	constraint FK_StudentTrackIntake_StudentId foreign key(StudentId_FK) references Student (StudentId),
 	constraint FK_StudentTrackIntake_TrackId foreign key(TrackId_FK) references Track (TrackId),
 	constraint FK_StudentTrackIntake_IntakeId foreign key(IntakeId_FK) references Intake (IntakeId),
-	constraint UQ_EnrollmentDate unique (EnrollmentDate)
 
 ) on branch_FG
 
@@ -150,7 +150,7 @@ create table StudentTrackIntake
 create table Course
 (
 	CourseId int identity(1,1),
-	CourseName varchar(20) not null,
+	CourseName varchar(100) not null,
 	CRS_Description varchar(100),
 	MinDegree smallint default 0,
 	MaxDegree smallint not null,
