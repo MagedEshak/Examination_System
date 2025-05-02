@@ -14,7 +14,7 @@ begin
 		return
 	end
 
-else if dbo.checkCousreHasStd(@courseId) = 0
+	else if dbo.checkCousreHasStd(@courseId) = 0
 					begin
 						print 'Course not have any Student'
 						return
@@ -32,9 +32,18 @@ else if dbo.checkCousreHasStd(@courseId) = 0
 	Course crs on stc.CourseId_FK = crs.CourseId
 	where
 	crs.CourseId = @courseId and crs.MinDegree <= se.ExamTotalResult
+
+	
 end
 
 go
+
+
+
+
+
+
+
 
 exec SP_GetEligibleStudentsForExams 50
 

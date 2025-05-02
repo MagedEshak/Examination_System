@@ -1,5 +1,29 @@
 use Examination;
 
+---- drop all tables
+/*
+drop table QuestionChoice			--1
+drop table StudentAnswer			--2
+drop table StudentExam				--3
+drop table StudentTrackIntake		--4
+drop table StudentTakeCourse		--5
+drop table Student					--6
+drop table InstructorTeachCourse	--7
+drop table TrackCourse				--8
+drop table Track					--9
+drop table ExamQuestion				--10
+drop table Exam						--11
+drop table Question					--12
+drop table Instructor				--13
+drop table Course					--14
+drop table Department				--15
+drop table Branch					--16
+drop table Intake					--17
+drop table TrainingManager			--18
+drop table Users					--19
+*/
+
+
 create table Users
 (
 	UserId int identity(1,1),
