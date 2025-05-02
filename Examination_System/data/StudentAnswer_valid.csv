@@ -1,0 +1,7 @@
+StudentId_FK,QuestionId_FK,ExamId_FK,StudentAnswer
+11,9,180,OptA
+11,2,180,OptA
+34,11,190,OptA
+34,1,190,OptA
+12,8,200,OptA
+12,7,200,OptA

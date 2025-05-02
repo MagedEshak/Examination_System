@@ -1,0 +1,20 @@
+TF,C# is a statically typed language.,True,1
+TF,Variables in C# must be declared before use.,True,1
+MCQ,Which of the following is a valid C# data type?,int,1
+MCQ,What symbol is used to end a statement in C#?,;,1
+TF,SQL stands for Structured Query Language.,True,2
+TF,A table in a database can have multiple primary keys.,False,2
+MCQ,Which command is used to retrieve data from a database?,SELECT,2
+MCQ,Which SQL clause is used to filter records?,WHERE,2
+TF,HTML is used to structure a web page.,True,3
+TF,CSS is used to program server-side logic.,False,3
+MCQ,Which tag is used to create a link in HTML?,<a>,3
+MCQ,Which CSS property controls text color?,color,3
+TF,Inheritance allows a class to use properties of another class.,True,4
+TF,An abstract class can be instantiated.,False,4
+MCQ,Which keyword is used to create an object in C#?,new,4
+MCQ,Which of these is NOT a principle of OOP?,Compilation,4
+TF,A stack is a Last In First Out (LIFO) data structure.,True,5
+TF,A queue adds elements at the front and removes from the back.,False,5
+MCQ,Which data structure uses FIFO principle?,Queue,5
+MCQ,Which of these is used to implement recursion?,Stack,5

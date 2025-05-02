@@ -1,0 +1,5 @@
+C#,Basics of programming using C#,50,100
+SQL,Fundamentals of relational databases and SQL,60,100
+HTML/CSS/JS,Front-end development concepts,55,100
+OOP,OOP principles in C#,50,100
+DS,Data structures and algorithms,60,100

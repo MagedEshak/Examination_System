@@ -1,0 +1,4 @@
+DeptId,DeptName,BranchId_FK
+40,CS,20
+50,IS,10
+60,EE,30

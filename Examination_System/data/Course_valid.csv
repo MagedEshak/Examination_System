@@ -1,0 +1,5 @@
+CourseId,CourseName,CRS_Description,MinDegree,MaxDegree
+140,ASP.NET,.NET Dev,0,100
+150,Python,Data Programming,0,100
+160,SQL,DBMS,0,100
+170,ML,Machine Learning,0,100

@@ -1,0 +1,13 @@
+QuestionId,QuestionType,QuestionText,CorrectAnswer,CourseId_FK
+1,mcq,What about 140?,OptA,140
+2,mcq,What about 140?,OptA,140
+3,mcq,What about 140?,OptA,140
+4,mcq,What about 150?,OptA,150
+5,mcq,What about 150?,OptA,150
+6,mcq,What about 150?,OptA,150
+7,mcq,What about 160?,OptA,160
+8,mcq,What about 160?,OptA,160
+9,mcq,What about 160?,OptA,160
+10,mcq,What about 170?,OptA,170
+11,mcq,What about 170?,OptA,170
+12,mcq,What about 170?,OptA,170

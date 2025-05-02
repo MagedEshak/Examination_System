@@ -1,0 +1,5 @@
+TrackId,TrackName,DeptId_FK
+70,Web Dev,40
+80,Data Sci,40
+90,Networks,50
+100,AI,50

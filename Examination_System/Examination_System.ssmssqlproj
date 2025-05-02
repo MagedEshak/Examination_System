@@ -4,7 +4,7 @@
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
         <ConnectionNode Name="ABDOX\SQLEXPRESS:ABDOX\abdom">
-          <Created>2025-04-30T16:00:03.4209285+03:00</Created>
+          <Created>2025-05-02T03:41:18.2072002+03:00</Created>
           <Type>SQL</Type>
           <Server>ABDOX\SQLEXPRESS</Server>
           <UserName />
@@ -13,19 +13,7 @@
           <LoginTimeout>30</LoginTimeout>
           <ExecutionTimeout>0</ExecutionTimeout>
           <ConnectionProtocol>NotSpecified</ConnectionProtocol>
-          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
-        </ConnectionNode>
-        <ConnectionNode Name="LAPTOP-CMR1M1SF\SQLDEV:ABDOX\abdom">
-          <Created>2025-04-30T00:25:07.5406754+03:00</Created>
-          <Type>SQL</Type>
-          <Server>LAPTOP-CMR1M1SF\SQLDEV</Server>
-          <UserName />
-          <Authentication>Windows Authentication</Authentication>
-          <InitialDB />
-          <LoginTimeout>30</LoginTimeout>
-          <ExecutionTimeout>0</ExecutionTimeout>
-          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
-          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+          <ApplicationName />
         </ConnectionNode>
       </Items>
     </LogicalFolder>
@@ -54,6 +42,30 @@
           <AssociatedConnSrvName>ABDOX\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLQuery3.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery4.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ABDOX\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ABDOX\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery4.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery5.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ABDOX\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ABDOX\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery5.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery6.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ABDOX\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ABDOX\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery6.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery7.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ABDOX\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ABDOX\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery7.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
