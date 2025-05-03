@@ -117,7 +117,6 @@ create table StudentTrackIntake
 	constraint FK_StudentTrackIntake_StudentId foreign key(StudentId_FK) references Student (StudentId),
 	constraint FK_StudentTrackIntake_TrackId foreign key(TrackId_FK) references Track (TrackId),
 	constraint FK_StudentTrackIntake_IntakeId foreign key(IntakeId_FK) references Intake (IntakeId),
-
 ) on branch_FG
 
 -----------------------------------------------------------------------------------------------
