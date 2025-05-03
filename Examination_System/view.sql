@@ -55,11 +55,11 @@ join Student S on SE.StudentId_FK=S.StudentId
 join Users U on S.UserId_FK=U.UserId
 join Exam E on SE.ExamId_FK= E.ExamId
 join Course C on E.ExamId in(
-    select ExamId_FK
-    from ExamQuestion EQ
-    join Question Q on EQ.QuestionId_FK = Q.QuestionId
-    where Q.CourseId_FK = C.CourseId
-	)
+					select ExamId_FK
+					from ExamQuestion EQ
+					join Question Q on EQ.QuestionId_FK = Q.QuestionId
+					where Q.CourseId_FK = C.CourseId
+					)
 
 select * from  StudentExam_v
 
