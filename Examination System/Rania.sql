@@ -130,9 +130,11 @@ GO
  --------------------------------------------------------------------
  /* Views*/
  --------------------------------------------------------------------
- create view InstructorExam_v
+ select * from InstructorExam_v
+
+ create OR ALTER view InstructorExam_v
 as
-select concat(U.FirstName,' ', U.LastName) as 'Instructor Name',
+select DISTINCT concat(U.FirstName,' ', U.LastName) as 'Instructor Name',
 C.CourseName, E.ExamType
 
 from Exam E
@@ -149,6 +151,8 @@ select * from InstructorExam_v
 --------------------------------------------------------------
 
 go
+
+select * from StudentExam_v
 
 create view StudentExam_v
 as

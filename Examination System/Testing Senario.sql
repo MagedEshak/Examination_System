@@ -174,8 +174,21 @@ exec SP_UpdateStudent
 @BuildingNum = 5
 go
 
+--------------------------------------------------------------
+-- adding Student To track
+exec SP_InsertNewStdToTrack 
+@userID = 74,
+@stdID = 87,
+@TrackId_FK = 11,
+@IntakeId_FK = 8,
+@EnrollmentDate = '2026-07-15'
 
+/*
+select * from StudentTrackIntake
+select * from Track
+select * from Intake
 
+*/
 
 
 

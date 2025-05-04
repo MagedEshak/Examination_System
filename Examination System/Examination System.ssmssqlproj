@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Examination System">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="ENG_ALI:ENG_ALI\aliga">
+          <Created>2025-05-02T23:28:18.9740965+03:00</Created>
+          <Type>SQL</Type>
+          <Server>ENG_ALI</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>Examination</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <TrustServerCertificate>True</TrustServerCertificate>
+          <HostNameInServerCertificate />
+          <EncryptionOption>True</EncryptionOption>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="Abd El Rahman.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Abd El Rahman.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Ali.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Ali.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Database_Creation.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Database_Creation.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DDL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DDL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DML.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DML.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Maged.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Maged.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Mahmoud.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Mahmoud.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Nardine.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Nardine.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Rania.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Rania.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Testing System.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Testing System.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Triggers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:ENG_ALI:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>ENG_ALI</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Triggers.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
