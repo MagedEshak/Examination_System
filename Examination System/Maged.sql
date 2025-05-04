@@ -48,73 +48,6 @@ begin
 end
 
 
-<<<<<<< HEAD:Examination_System/Maged.sql
-create or alter proc SP_CreateBranch
-	@userID  int,
-	@BranchId int,
-	@BranchName varchar(20)
-as
-begin
-	declare @tm int
-	declare @trainingManagerId int
-
-	exec SP_GetTMId_afterCheck @userID , @tm output
-
-	if exists
-		(
-			select 1
-	from TrainingManager
-	where ManagerId = @tm
-		)
-		begin
-		set @trainingManagerId = @tm
-	end
-
-	else
-		begin
-		print 'Training Manager not found'
-		return
-	end
-
-	if exists
-			(
-				select 1
-	from Branch
-	where BranchId = @BranchId
-			)
-			begin
-		print 'Branch ID Found'
-	end
-
-	else if exists
-			(
-				select 1
-	from Branch
-	where BranchName = @BranchName
-			)
-			begin
-		print 'Branch Name Found'
-	end
-
-	else
-		begin
-		begin try
-				insert into Branch
-			(BranchName, ManagerId_FK)
-		values
-			(@BranchName, @trainingManagerId)
-							print 'Branch Created'
-				end try
-
-				begin catch
-						print 'Error Training Manager ID'
-				end catch
-
-
-	end
-end
-=======
->>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Maged.sql
 go
 
 ------------ SP to Update Branch -------------------
@@ -411,16 +344,6 @@ end
 
 ------- EXEC Queries
 ------------------------------------------------------------------------------------
-<<<<<<< HEAD:Examination_System/Maged.sql
-------- exec SP_CreateBranch
-exec SP_CreateBranch 3,430,'Sharqia'
-
-select *
-from Branch
-
-------------------------------------------------------------------------------------
-=======
->>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Maged.sql
 ------- exec SP_UpdateBranch
 exec SP_UpdateBranch 3,320,'Asyut'
 
@@ -463,103 +386,101 @@ exec SP_InsertNewStdToTrack
 @userID = 35,
 @stdID = 87,
 @TrackId_FK = 11,
-@IntakeId_FK = 8,
+@IntakeId_FK = 10,
 @EnrollmentDate = '2026-07-15'
 
-<<<<<<< HEAD:Examination_System/Maged.sql
 select *
 from StudentTrackIntake
 select *
 from Track
 select *
 from Intake
-=======
-select * from StudentTrackIntake
-select * from Track
-select * from Intake
 
-
+go
 ------------------------------------------------------------------
 ---------view
 -------Instructor exam overview.                   view Exams, Students, Courses 
 
-use Examination
-GO
-
-create or alter view Instructorcourse_v 
+create or alter view Instructorcourse_v
 as
-select 
-concat(U.FirstName ,' ',U.LastName) as 'Instructor Name', C.CourseName,
-ITC.Class as 'Class Number', ITC.TeachYear as 'Teach Year'
+	select
+		concat(U.FirstName ,' ',U.LastName) as 'Instructor Name', C.CourseName,
+		ITC.Class as 'Class Number', ITC.TeachYear as 'Teach Year'
 
 
-from InstructorTeachCourse ITC
+	from InstructorTeachCourse ITC
 
-join Instructor I on ITC.InstructorId_FK= I.InstructorId
-join Users U on I.UserId_FK=U.UserId
-join Course C on ITC.CourseId_FK=C.CourseId
-
-
-where C.CourseId= ITC.CourseId_FK and I.InstructorId=ITC.InstructorId_FK
+		join Instructor I on ITC.InstructorId_FK= I.InstructorId
+		join Users U on I.UserId_FK=U.UserId
+		join Course C on ITC.CourseId_FK=C.CourseId
 
 
-select * from  Instructorcourse_v 
+	where C.CourseId= ITC.CourseId_FK and I.InstructorId=ITC.InstructorId_FK
 
 
+select *
+from Instructorcourse_v
+
+go
 -------------------------------------------------------------------
 create or alter proc SP_InsertNewTrainingManager
-@userID  int,
-@fName varchar(20),
-@lName varchar(20),
-@gender char(1),
-@PhoneNumber char(11),
-@email varchar(30),
-@password varchar(15)
+	@userID  int,
+	@fName varchar(20),
+	@lName varchar(20),
+	@gender char(1),
+	@PhoneNumber char(11),
+	@email varchar(30),
+	@password varchar(15)
 as
 begin
 
-declare  @newUserId  int
+	declare  @newUserId  int
 
 
 	if exists
 			(
-				select 1 from Users
-				where Email = @email 
+				select 1
+	from Users
+	where Email = @email 
 			)
 			begin
-				print 'Training Manager Found and Email Found'
-				print 'Please, Enter New Training Manager'
-			end
+		print 'Training Manager Found and Email Found'
+		print 'Please, Enter New Training Manager'
+	end
 
 	if exists
 			(
-				select 1 from Users
-				where PhoneNumber = @PhoneNumber
+				select 1
+	from Users
+	where PhoneNumber = @PhoneNumber
 			)
 			begin
-				print 'Training Manager and Phone Found'
-				print 'Please, Enter New Training Manager'
-			end
+		print 'Training Manager and Phone Found'
+		print 'Please, Enter New Training Manager'
+	end
 
 	else
 		begin
-			begin try
-				insert into Users(FirstName,LastName,Gender,PhoneNumber,Email,Password_,Role_)
-				values (@fName,@lName,@gender,@PhoneNumber,@email,@password,'training manager')
+		begin try
+				insert into Users
+			(FirstName,LastName,Gender,PhoneNumber,Email,Password_,Role_)
+		values
+			(@fName, @lName, @gender, @PhoneNumber, @email, @password, 'training manager')
 				print 'New User was Created'
 						
 				set @newUserId = SCOPE_IDENTITY()
 								
 
-				insert into TrainingManager(UserId_FK)
-				values (@newUserId)
+				insert into TrainingManager
+			(UserId_FK)
+		values
+			(@newUserId)
 				print 'New Training Manager was Created'
 			end try
 
 			begin catch
 					print 'Error Training Manager ID'
-			end catch	
-		end	
+			end catch
+	end
 end
 go
->>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Maged.sql
