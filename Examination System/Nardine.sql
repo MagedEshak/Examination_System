@@ -24,7 +24,7 @@ BEGIN
 
 	SELECT @CourseName = C.CourseName 
 	FROM Course C, Question Q
-	WHERE C.CourseId = Q.CourseId_FK 
+	WHERE Q.CourseId_FK = C.CourseId  
 	AND Q.QuestionId = @QuestionId
 
 	RETURN @CourseName
