@@ -174,6 +174,10 @@ exec SP_UpdateStudent
 @BuildingNum = 5
 go
 
+<<<<<<< HEAD:Examination_System/Testing Senario.sql
+
+
+=======
 --------------------------------------------------------------
 -- adding Student To track
 exec SP_InsertNewStdToTrack 
@@ -189,6 +193,7 @@ select * from Track
 select * from Intake
 
 */
+>>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Testing Senario.sql
 
 
 

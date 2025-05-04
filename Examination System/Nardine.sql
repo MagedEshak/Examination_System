@@ -24,7 +24,11 @@ BEGIN
 
 	SELECT @CourseName = C.CourseName 
 	FROM Course C, Question Q
+<<<<<<< HEAD:Examination_System/Nardine.sql
+	WHERE C.CourseId = Q.CourseId_FK 
+=======
 	WHERE Q.CourseId_FK = C.CourseId  
+>>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Nardine.sql
 	AND Q.QuestionId = @QuestionId
 
 	RETURN @CourseName

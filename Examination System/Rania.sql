@@ -130,11 +130,17 @@ GO
  --------------------------------------------------------------------
  /* Views*/
  --------------------------------------------------------------------
+<<<<<<< HEAD:Examination_System/Rania.sql
+ create view InstructorExam_v
+as
+select concat(U.FirstName,' ', U.LastName) as 'Instructor Name',
+=======
  select * from InstructorExam_v
 
  create OR ALTER view InstructorExam_v
 as
 select DISTINCT concat(U.FirstName,' ', U.LastName) as 'Instructor Name',
+>>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Rania.sql
 C.CourseName, E.ExamType
 
 from Exam E
@@ -152,8 +158,11 @@ select * from InstructorExam_v
 
 go
 
+<<<<<<< HEAD:Examination_System/Rania.sql
+=======
 select * from StudentExam_v
 
+>>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Rania.sql
 create view StudentExam_v
 as
 select
