@@ -386,7 +386,7 @@ exec SP_InsertNewStdToTrack
 @userID = 35,
 @stdID = 87,
 @TrackId_FK = 11,
-@IntakeId_FK = 10,
+@IntakeId_FK = 21,
 @EnrollmentDate = '2026-07-15'
 
 select *

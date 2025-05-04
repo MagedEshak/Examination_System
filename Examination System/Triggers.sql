@@ -27,7 +27,7 @@ BEGIN
 END
 
 
-
+go
 
 CREATE TRIGGER trg_StudentRoleValidation
 ON student
@@ -57,6 +57,7 @@ BEGIN
 	END
 END
 
+go
 
 CREATE TRIGGER trg_ManagerRoleValidation
 ON TrainingManager
