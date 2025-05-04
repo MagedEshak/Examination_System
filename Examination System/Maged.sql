@@ -3,7 +3,7 @@ use Examination;
 go
 
 ------------ Function to check if userId Role = TM -------------------
-create function checkTMRole(@userID int)
+create OR Alter function checkTMRole(@userID int)
 returns bit
 begin
 	declare @msg varchar(100)
@@ -47,9 +47,8 @@ begin
 	end
 end
 
------------- SP to Create new Branch -------------------
-go
 
+<<<<<<< HEAD:Examination_System/Maged.sql
 create or alter proc SP_CreateBranch
 	@userID  int,
 	@BranchId int,
@@ -114,6 +113,8 @@ begin
 
 	end
 end
+=======
+>>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Maged.sql
 go
 
 ------------ SP to Update Branch -------------------
@@ -410,6 +411,7 @@ end
 
 ------- EXEC Queries
 ------------------------------------------------------------------------------------
+<<<<<<< HEAD:Examination_System/Maged.sql
 ------- exec SP_CreateBranch
 exec SP_CreateBranch 3,430,'Sharqia'
 
@@ -417,6 +419,8 @@ select *
 from Branch
 
 ------------------------------------------------------------------------------------
+=======
+>>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Maged.sql
 ------- exec SP_UpdateBranch
 exec SP_UpdateBranch 3,320,'Asyut'
 
@@ -462,9 +466,100 @@ exec SP_InsertNewStdToTrack
 @IntakeId_FK = 8,
 @EnrollmentDate = '2026-07-15'
 
+<<<<<<< HEAD:Examination_System/Maged.sql
 select *
 from StudentTrackIntake
 select *
 from Track
 select *
 from Intake
+=======
+select * from StudentTrackIntake
+select * from Track
+select * from Intake
+
+
+------------------------------------------------------------------
+---------view
+-------Instructor exam overview.                   view Exams, Students, Courses 
+
+use Examination
+GO
+
+create or alter view Instructorcourse_v 
+as
+select 
+concat(U.FirstName ,' ',U.LastName) as 'Instructor Name', C.CourseName,
+ITC.Class as 'Class Number', ITC.TeachYear as 'Teach Year'
+
+
+from InstructorTeachCourse ITC
+
+join Instructor I on ITC.InstructorId_FK= I.InstructorId
+join Users U on I.UserId_FK=U.UserId
+join Course C on ITC.CourseId_FK=C.CourseId
+
+
+where C.CourseId= ITC.CourseId_FK and I.InstructorId=ITC.InstructorId_FK
+
+
+select * from  Instructorcourse_v 
+
+
+-------------------------------------------------------------------
+create or alter proc SP_InsertNewTrainingManager
+@userID  int,
+@fName varchar(20),
+@lName varchar(20),
+@gender char(1),
+@PhoneNumber char(11),
+@email varchar(30),
+@password varchar(15)
+as
+begin
+
+declare  @newUserId  int
+
+
+	if exists
+			(
+				select 1 from Users
+				where Email = @email 
+			)
+			begin
+				print 'Training Manager Found and Email Found'
+				print 'Please, Enter New Training Manager'
+			end
+
+	if exists
+			(
+				select 1 from Users
+				where PhoneNumber = @PhoneNumber
+			)
+			begin
+				print 'Training Manager and Phone Found'
+				print 'Please, Enter New Training Manager'
+			end
+
+	else
+		begin
+			begin try
+				insert into Users(FirstName,LastName,Gender,PhoneNumber,Email,Password_,Role_)
+				values (@fName,@lName,@gender,@PhoneNumber,@email,@password,'training manager')
+				print 'New User was Created'
+						
+				set @newUserId = SCOPE_IDENTITY()
+								
+
+				insert into TrainingManager(UserId_FK)
+				values (@newUserId)
+				print 'New Training Manager was Created'
+			end try
+
+			begin catch
+					print 'Error Training Manager ID'
+			end catch	
+		end	
+end
+go
+>>>>>>> 21f980023af86328731aba6f792ab56595f3535d:Examination System/Maged.sql
