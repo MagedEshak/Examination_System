@@ -23,7 +23,6 @@ drop table TrainingManager			--18
 drop table Users					--19
 */
 
-
 create table Users
 (
 	UserId int identity(1,1),
@@ -63,7 +62,7 @@ create table Student
 
 create table Instructor
 (
-	InstructorId int identity(10,2),
+	InstructorId int identity(1,1),
 	HireDate Date,
 	UserId_FK int
 
@@ -75,7 +74,7 @@ create table Instructor
 
 create table TrainingManager
 (
-	ManagerId int identity(2,2),
+	ManagerId int identity(1,1),
 	UserId_FK int,
 
 	constraint PK_ManagerId primary key (ManagerId),
@@ -88,7 +87,7 @@ create table TrainingManager
 	
 create table Branch
 (
-	BranchId int identity(100,10),
+	BranchId int identity(1,1),
 	BranchName varchar(20),
 	ManagerId_FK int,
 
@@ -99,7 +98,7 @@ create table Branch
 
 create table Department
 (
-	DeptId int identity(10,10),
+	DeptId int identity(1,1),
 	DeptName varchar(20),
 	BranchId_FK int,
 
@@ -137,10 +136,11 @@ create table StudentTrackIntake
 	IntakeId_FK int,
 	EnrollmentDate date,
 
-	constraint PK_StudentTrackIntake primary key (StudentId_FK,IntakeId_FK,EnrollmentDate),
+	constraint PK_StudentTrackIntake primary key (StudentId_FK,IntakeId_FK),
 	constraint FK_StudentTrackIntake_StudentId foreign key(StudentId_FK) references Student (StudentId),
 	constraint FK_StudentTrackIntake_TrackId foreign key(TrackId_FK) references Track (TrackId),
 	constraint FK_StudentTrackIntake_IntakeId foreign key(IntakeId_FK) references Intake (IntakeId),
+
 ) on branch_FG
 
 -----------------------------------------------------------------------------------------------
@@ -188,7 +188,7 @@ create table QuestionChoice
 
 create table Exam
 (
-	ExamId int identity(20,1),
+	ExamId int identity(1,1),
 	ExamType varchar(30) not null,
 	StartTime datetime not null,
 	EndTime datetime not null,
@@ -274,3 +274,38 @@ create table ExamQuestion
 	constraint FK_ExamQuestion_ExamId foreign key(ExamId_FK) references Exam(ExamId),
 	constraint CK_Question_Degree check(QusetionDegree <= 10)
 ) on material_FG	
+
+
+
+
+
+
+--------------------------------------------------------
+CREATE NONCLUSTERED INDEX UserRole_index
+ON Users(Role_)
+
+CREATE NONCLUSTERED INDEX UserEmail_index
+ON Users(Email)
+
+CREATE UNIQUE INDEX CourseName_index
+ON Course(CourseName)
+
+CREATE NONCLUSTERED INDEX ExamType_index
+ON Exam(ExamType)
+
+
+ALTER TABLE TrainingManager
+ADD CONSTRAINT UK_UserID_FK
+UNIQUE (UserId_FK)
+
+ALTER TABLE Student
+ADD CONSTRAINT UK_Student_UserID_FK
+UNIQUE (UserId_FK)
+
+ALTER TABLE Instructor
+ADD CONSTRAINT UK_Instructor_UserID_FK
+UNIQUE (UserId_FK)
+
+ALTER TABLE Branch
+ADD CONSTRAINT UK_ManagerID_FK
+UNIQUE (ManagerId_FK)
