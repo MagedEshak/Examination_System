@@ -1,26 +1,5 @@
 use Examination;
 
-go
-
------------- Function to check if userId Role = TM -------------------
-create OR Alter function checkTMRole(@userID int)
-returns bit
-begin
-	declare @msg varchar(100)
-
-	if exists
-	(
-		select 1
-	from Users
-	where UserId = @userID and Role_ = 'training manager'
-	)
-	set @msg = 1
-
-	else
-	set @msg = 0
-	return @msg
-end
-go
 
 ------------ SP to Get TM ID after check if userId Role = TM -------------------
 create or alter proc SP_GetTMId_afterCheck
@@ -98,12 +77,20 @@ begin
 		end
 		begin try
 				print 'Branch Found'
-		
+				if exists ( select 1 from Branch 
+					where BranchId = @BranchId and ManagerId_FK = @trainingManagerId 
+				)
+				begin
 				update Branch
 				set BranchName = @BranchName
 				where BranchId = @BranchId and ManagerId_FK = @trainingManagerId
 				
 				print 'Branch Updated'
+				end
+
+				else
+					print 'This manager has no access on this branch'
+
 				end try
 
 				begin catch
@@ -343,6 +330,8 @@ begin
 end
 
 ------- EXEC Queries
+
+------- EXEC Queries
 ------------------------------------------------------------------------------------
 ------- exec SP_UpdateBranch
 exec SP_UpdateBranch 3,320,'Asyut'
@@ -424,13 +413,14 @@ from Instructorcourse_v
 go
 -------------------------------------------------------------------
 create or alter proc SP_InsertNewTrainingManager
-	@userID  int,
-	@fName varchar(20),
-	@lName varchar(20),
-	@gender char(1),
-	@PhoneNumber char(11),
-	@email varchar(30),
-	@password varchar(15)
+
+@fName varchar(20),
+@lName varchar(20),
+@gender char(1),
+@PhoneNumber char(11),
+@email varchar(30),
+@password varchar(15)
+
 as
 begin
 
