@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # SQL Server Management Studio Solution File, Format Version 20.00
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Examination_System", "Examination_System\Examination_System.ssmssqlproj", "{13E49F29-CC19-4A45-9222-F30750C0BEE1}"
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Examination System", "Examination System\Examination System.ssmssqlproj", "{13E49F29-CC19-4A45-9222-F30750C0BEE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

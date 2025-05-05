@@ -26,7 +26,13 @@ BEGIN
 	END
 END
 
+<<<<<<< HEAD
 ------------------------------------------------------------------
+=======
+
+go
+
+>>>>>>> fa9232f50da850361fd8ae058f557f41bc9ba3b1
 CREATE TRIGGER trg_StudentRoleValidation
 ON student
 INSTEAD OF INSERT
@@ -54,7 +60,13 @@ BEGIN
 		PRINT 'NOT PERMITTED'
 	END
 END
+<<<<<<< HEAD
 ----------------------------------------------------------------
+=======
+
+go
+
+>>>>>>> fa9232f50da850361fd8ae058f557f41bc9ba3b1
 CREATE TRIGGER trg_ManagerRoleValidation
 ON TrainingManager
 INSTEAD OF INSERT

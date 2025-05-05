@@ -19,7 +19,7 @@ EXEC AddExamWithQuestions
   @EndTime             = '2025-05-05 18:00:00',
   @Mode                = 'Manual',
   @ManualQuestionList  = '1=10,2=10,3=10,4=10,5=10';
-  -- exam id = 39
+-- exam id = 39
 
 
 /*
@@ -34,20 +34,24 @@ EXEC dbo.GetEligibleStudentsForExam 4;
 -- determine student ids to enter this exam
 EXEC AssignStudentsToExam 3, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15'
 
-select * from 
-Question Q , QuestionChoice QC
-where Q.CourseId_FK = 1 
-And QC.QuestionId_FK = Q.QuestionId
+select *
+from
+  Question Q , QuestionChoice QC
+where Q.CourseId_FK = 1
+  And QC.QuestionId_FK = Q.QuestionId
 
 -- students open exam
+
 EXEC GetStudentExamSchedule 1
 
 EXEC OpenExam 3 
 
 
+
 -------------------------------------------------
 -- students 1 submit answers
 --						 St_ID   Exam_ID   Q.No   Answer
+
 EXEC UpdateStudentAnswers  1,	   3,		2,   'True'
 EXEC UpdateStudentAnswers  1,	   3,		4,   'False' 
 EXEC UpdateStudentAnswers  1,	   3,		5,   '<!DOCTYPE html>' 
@@ -60,6 +64,7 @@ EXEC UpdateStudentAnswers  2,	   3,		5,   '<!DOCTYPE html>'
 EXEC UpdateStudentAnswers  2,	   3,		1,   'Hyper Text Markup Language' 
 EXEC UpdateStudentAnswers  2,	   3,		3,   'cc' 
 
+
 -- SHOW STUDENT RESULT
 --                      St_ID
 Exec sp_StudentResults   2
@@ -69,10 +74,10 @@ Exec sp_StudentResults   2
 -- students 1 submit answers
 --						 St_ID   Exam_ID   Q.No   Answer
 EXEC UpdateStudentAnswers  1,	   2,		2,   'True'
-EXEC UpdateStudentAnswers  1,	   2,		4,   'False' 
-EXEC UpdateStudentAnswers  1,	   2,		5,   '<!DOCTYPE html>' 
-EXEC UpdateStudentAnswers  1,	   2,		1,   'Hyper Text Markup Language' 
-EXEC UpdateStudentAnswers  1,	   2,		3,   '<a>' 
+EXEC UpdateStudentAnswers  1,	   2,		4,   'False'
+EXEC UpdateStudentAnswers  1,	   2,		5,   '<!DOCTYPE html>'
+EXEC UpdateStudentAnswers  1,	   2,		1,   'Hyper Text Markup Language'
+EXEC UpdateStudentAnswers  1,	   2,		3,   '<a>'
 
 -- SHOW STUDENT RESULT
 --                      St_ID
@@ -81,10 +86,10 @@ Exec sp_StudentResults   1
 -- students 1 submit answers
 --						 St_ID   Exam_ID   Q.No   Answer
 EXEC UpdateStudentAnswers  1,	   2,		2,   'True'
-EXEC UpdateStudentAnswers  1,	   2,		4,   'False' 
-EXEC UpdateStudentAnswers  1,	   2,		5,   '<!DOCTYPE html>' 
-EXEC UpdateStudentAnswers  1,	   2,		1,   'Hyper Text Markup Language' 
-EXEC UpdateStudentAnswers  1,	   2,		3,   '<a>' 
+EXEC UpdateStudentAnswers  1,	   2,		4,   'False'
+EXEC UpdateStudentAnswers  1,	   2,		5,   '<!DOCTYPE html>'
+EXEC UpdateStudentAnswers  1,	   2,		1,   'Hyper Text Markup Language'
+EXEC UpdateStudentAnswers  1,	   2,		3,   '<a>'
 
 -- SHOW STUDENT RESULT
 --                      St_ID
@@ -101,18 +106,18 @@ EXEC AddExamWithQuestions
   @EndTime             = '2025-05-03 23:59:00',
   @Mode                = 'Manual',
   @ManualQuestionList  = '8=8,9=10,10=7,11=8,12=10';
-  -- exam id = 38
+-- exam id = 38
 
-  -- show eligable students for this exam 
+-- show eligable students for this exam 
 EXEC dbo.GetEligibleStudentsForExam 23;
 
 -- students 1 submit answers
 --						 St_ID   Exam_ID   Q.No   Answer
 EXEC UpdateStudentAnswers  1,	   2,		2,   'True'
-EXEC UpdateStudentAnswers  1,	   2,		4,   'False' 
-EXEC UpdateStudentAnswers  1,	   2,		5,   '<!DOCTYPE html>' 
-EXEC UpdateStudentAnswers  1,	   2,		1,   'Hyper Text Markup Language' 
-EXEC UpdateStudentAnswers  1,	   2,		3,   '<a>' 
+EXEC UpdateStudentAnswers  1,	   2,		4,   'False'
+EXEC UpdateStudentAnswers  1,	   2,		5,   '<!DOCTYPE html>'
+EXEC UpdateStudentAnswers  1,	   2,		1,   'Hyper Text Markup Language'
+EXEC UpdateStudentAnswers  1,	   2,		3,   '<a>'
 
 -- SHOW STUDENT RESULT
 --                      St_ID
@@ -136,11 +141,14 @@ EXEC SP_InsertNewTrainingManager
 @email = 'ahmKehalcced.al@gmail.com',
 @password = '123456789'
 
-select * from TrainingManager
+select *
+from TrainingManager
+
 
 
 select * from branch 
 select * from TrainingManager
+
 
 -- Creating Branch
 --          manager id in user table
@@ -168,8 +176,10 @@ exec SP_InsertNewStd
 @street = 'Al Galaa ST',
 @BuildingNum = 5
 
-select * from Users
-select * from Student
+select *
+from Users
+select *
+from Student
 
 select * from Users
 -- updating Student
@@ -211,9 +221,6 @@ Exec SP_AddTrackInDepartment	'Virtualization_Advanced',   3
 ---------------------------------------------
 -- adding intake		Description				StartDate		  EndDate
 Exec SP_AddIntake	'R13 Summer 2026 - II',	  '2026-12-01', 	'2026-12-30'
-
-
-
 
 
 
