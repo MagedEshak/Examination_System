@@ -6,15 +6,11 @@ delete from ExamQuestion
 delete from Exam
 
 
+
 -- Instructor will open his course questions to choose some
 -- he also can generate the exam automatically
-EXEC SP_CourseQuestions 1
+EXEC GetCourseQuestions 1
 
-/*
-select I.InstructorId,C.CourseId,  C.CourseName from 
-Instructor I , Course C, InstructorTeachCourse ITC
-where I.InstructorId = ITC.InstructorId_FK AND C.CourseId = ITC.CourseId_FK
-*/
 
 -- Then he insert new exam in Exam , ExamQuestion
 EXEC AddExamWithQuestions
@@ -46,7 +42,10 @@ where Q.CourseId_FK = 1
 And QC.QuestionId_FK = Q.QuestionId
 
 -- students open exam
+EXEC GetStudentExamSchedule 1
+
 EXEC OpenExam 2 
+
 
 -------------------------------------------------
 -- students 1 submit answers
@@ -175,20 +174,32 @@ exec SP_UpdateStudent
 go
 
 --------------------------------------------------------------
+
+select * from Track
+select * from Intake
+
+-- need modification
 -- adding Student To track
 exec SP_InsertNewStdToTrack 
 @userID = 74,
-@stdID = 87,
+@stdID = 51,
 @TrackId_FK = 11,
 @IntakeId_FK = 8,
 @EnrollmentDate = '2026-07-15'
 
-/*
-select * from StudentTrackIntake
-select * from Track
-select * from Intake
 
-*/
+
+select * from Track
+select * from Department
+---------------------------------------------
+-- adding track					 Track Name                Dept_ID
+Exec SP_AddTrackInDepartment	'Virtualization_Advanced',   3
+
+---------------------------------------------
+-- adding intake		Description				StartDate		  EndDate
+Exec SP_AddIntake	'R13 Summer 2026 - II',	  '2026-12-01', 	'2026-12-30'
+
+
 
 
 

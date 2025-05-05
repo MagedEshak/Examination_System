@@ -86,6 +86,8 @@ BEGIN
 	RETURN @maxDegree
 End
 
+
+
 GO
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
@@ -131,6 +133,8 @@ BEGIN
 	RETURN @StudentDegree;
 END
 
+SELECT DBO.CorrectStudentExam(1,2)
+
 GO
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
@@ -159,3 +163,79 @@ GO
 	AND ExamId_FK = @ExamId
  END
 
+
+
+ /*
+	THIS PROC is used to create New Track In Specific Department
+	Takes TrackName, And Department ID
+ */
+ CREATE OR ALTER PROC SP_AddTrackInDepartment @TrackName VARCHAR(100) , @DeptID INT
+ AS
+ BEGIN
+	-- CHECK IF THE TRACK NAME IS ALREADY EXISTS OR NOT
+	IF Exists(
+		SELECT * 
+		FROM Track T
+		WHERE T.TrackName = @TrackName
+	)
+	BEGIN
+		PRINT 'Track Is Alraedy Exists'
+		RETURN
+	END
+
+	-- CHECK IF THE DEPARTMENT ID IS ALREADY EXISTS OR NOT
+	IF NOT EXISTS (
+		SELECT * FROM Department D
+		WHERE D.DeptId = @DeptID
+	)
+	BEGIN
+		PRINT 'DEPARTMENT NOT FOUND'
+		RETURN
+	END
+
+	-- CREATE THE NEW TRACK
+	INSERT INTO Track
+	VALUES (@TrackName, @DeptID);
+
+	DECLARE  @NewTrackId INT;
+	SET @NewTrackId = SCOPE_IDENTITY()
+	SELECT @NewTrackId AS 'TRACK NEW ID';
+ END
+
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+ GO
+
+
+/*
+	THIS PROC is used to create New Intake 
+	Takes Intake Desc, StartDate And EndDate 
+*/
+ CREATE OR ALTER PROC SP_AddIntake @Description VARCHAR(100) ,
+						@StartDate DATE , @EndDate DATE
+ AS
+ BEGIN
+	-- CHECK IF THE Intake Desc OR Start Date Are ALREADY EXIST OR NOT
+	IF Exists(
+		SELECT * 
+		FROM Intake I
+		WHERE I.StartDate = @StartDate 
+			OR I.Description = @Description
+	)
+	BEGIN
+		PRINT 'Intake Is Alraedy Exists'
+		RETURN
+	END
+
+	-- CREATE THE NEW Intake
+	INSERT INTO Intake
+	VALUES (@Description, @StartDate, @EndDate);
+
+	DECLARE  @NewIntakeId INT;
+	SET @NewIntakeId = SCOPE_IDENTITY()
+	SELECT @NewIntakeId AS 'Intake NEW ID';
+ END
+
+
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------

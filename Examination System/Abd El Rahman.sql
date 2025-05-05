@@ -1,4 +1,4 @@
-
+use Examination;
  /* IN CASE IF EXAM CREATED SUCCESSFULLY*/    
  CREATE OR ALTER PROC AssignStudentsToExam @ExamID INT, @StudentList VARCHAR(MAX)
  AS
@@ -31,36 +31,41 @@
  END
 
 
+ EXEC GetStudentExamSchedule 15
+
+CREATE PROCEDURE dbo.GetStudentExamSchedule
+    @StudentId INT
+AS
+BEGIN
+    SELECT
+        e.ExamId,
+        e.ExamType,
+        u.FirstName + ' ' + u.LastName AS InstructorName,
+        (
+            SELECT STRING_AGG(c2.CourseName, ', ') 
+            WITHIN GROUP (ORDER BY c2.CourseName)
+            FROM (
+                SELECT DISTINCT c.CourseName
+                FROM dbo.ExamQuestion eq2
+                JOIN dbo.Question q2 ON eq2.QuestionId_FK = q2.QuestionId
+                JOIN dbo.Course c ON q2.CourseId_FK = c.CourseId
+                WHERE eq2.ExamId_FK = e.ExamId
+            ) AS c2
+        ) AS CoursesCovered,
+        e.StartTime,
+        e.EndTime,
+        e.TotalTime
+    FROM dbo.StudentExam se
+    JOIN dbo.Exam e ON se.ExamId_FK = e.ExamId
+    JOIN dbo.Instructor i ON e.InstructorId_FK = i.InstructorId
+    JOIN dbo.Users u ON i.UserId_FK = u.UserId
+    WHERE se.StudentId_FK = @StudentId
+END
 GO
 
- 
-/* CREATE PROCEDURE (STUDENT ID) -> VIEW HIS EXAM SCHEDULE*/
-CREATE VIEW dbo.ExamSchedule
-AS
-SELECT
-  e.ExamId,
-  e.ExamType,
-  u.FirstName + ' ' + u.LastName   AS InstructorName,
-  (
-     SELECT STRING_AGG(c2.CourseName, ', ') 
-       WITHIN GROUP (ORDER BY c2.CourseName)
-     FROM (
-       SELECT DISTINCT c.CourseName
-       FROM dbo.ExamQuestion eq2
-       JOIN dbo.Question         q2 ON eq2.QuestionId_FK = q2.QuestionId
-       JOIN dbo.Course           c  ON q2.CourseId_FK    = c.CourseId
-       WHERE eq2.ExamId_FK = e.ExamId
-     ) AS c2
-  ) AS CoursesCovered,
-  e.StartTime,
-  e.EndTime,
-  e.TotalTime
-FROM dbo.Exam AS e
-JOIN dbo.Instructor AS i
-  ON e.InstructorId_FK = i.InstructorId
-JOIN dbo.Users AS u
-  ON i.UserId_FK = u.UserId;
-GO
+
+EXEC dbo.GetStudentExamSchedule @StudentId = 1;
+
 
 
 ---------------------------------------------------------
@@ -84,46 +89,37 @@ BEGIN
     END;
 END;
 
-Go
 
-
-
-CREATE OR ALTER VIEW vw_InstructorQuestions AS
-SELECT
-    I.InstructorID,
-    C.CourseID,
-    C.CourseName,
-    Q.QuestionId      AS QuestionID,
-    Q.QuestionType    AS QuestionType,
-    Q.QuestionText,
-    Q.CorrectAnswer,
-    STRING_AGG(QC.ChoiceText, '  |  ')     AS ChoiceText
-FROM
-    Instructor I
-    INNER JOIN InstructorTeachCourse ITC
-        ON I.InstructorID = ITC.InstructorID_FK
-    INNER JOIN Course C
-        ON ITC.CourseID_FK = C.CourseID
-    INNER JOIN Question Q
-        ON C.CourseID     = Q.CourseID_FK
-    LEFT JOIN QuestionChoice QC
-        ON Q.QuestionId   = QC.QuestionId_FK
-GROUP BY I.InstructorID, C.CourseID, C.CourseName, Q.QuestionId,
-    Q.QuestionType, Q.QuestionText, Q.CorrectAnswer
-
-
-GO
-
-
-/*Create Proc (instID, CourseID)*/
-CREATE OR ALTER PROC SP_CourseQuestions(@CourseId INT)
+CREATE PROCEDURE dbo.GetCourseQuestions
+    @CourseId INT
 AS
 BEGIN
-	SELECT * FROM vw_InstructorQuestions C
-	WHERE C.CourseID = @CourseId
-END
+    SET NOCOUNT ON;
 
+    SELECT
+        Q.QuestionId      AS QuestionID,
+        Q.QuestionType    AS QuestionType,
+        Q.QuestionText    AS QuestionText,
+        Q.CorrectAnswer   AS CorrectAnswer,
+        COALESCE(
+          STRING_AGG(QC.ChoiceText, '  |  ')
+            WITHIN GROUP (ORDER BY QC.ChoiceText),
+          ''  -- empty string if no choices
+        ) AS ChoiceText
+    FROM dbo.Question Q
+    LEFT JOIN dbo.QuestionChoice QC
+      ON Q.QuestionId = QC.QuestionId_FK
+    WHERE Q.CourseId_FK = @CourseId
+    GROUP BY
+        Q.QuestionId,
+        Q.QuestionType,
+        Q.QuestionText,
+        Q.CorrectAnswer
+    ORDER BY Q.QuestionId;
+END
 GO
+
+EXEC dbo.GetCourseQuestions @CourseId = 1;
 
 CREATE OR ALTER PROC OpenExam @ExamID INT
 AS
@@ -169,7 +165,15 @@ IF(  @CurrentTime >=  @StartTime AND @CurrentTime <= @EndTime )
 
 	ELSE IF(@CurrentTime <  @StartTime)
 	BEGIN
-		PRINT 'EXAM HAS NO ACCESS NOW'
+		PRINT 'EXAM HAS NO ACCESS NOW'
 	END
 	
 END
+
+
+
+
+
+
+
+

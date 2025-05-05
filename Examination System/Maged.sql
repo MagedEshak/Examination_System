@@ -275,11 +275,11 @@ go
 
 ------------ SP to Insert New Std to Track -------------------
 create or alter proc SP_InsertNewStdToTrack
-@userID int,
-@stdID  int,
-@TrackId_FK int,
-@IntakeId_FK int,
-@EnrollmentDate date
+	@userID int,
+	@stdID  int,
+	@TrackId_FK int,
+	@IntakeId_FK int,
+	@EnrollmentDate date
 as
 begin
 	declare @tm int
@@ -288,8 +288,9 @@ begin
 	exec SP_GetTMId_afterCheck @userID , @tm output
 	if exists
 	(
-		select 1 from TrainingManager 
-		where ManagerId = @tm
+		select 1
+	from TrainingManager
+	where ManagerId = @tm
 	)
 	begin
 		set @trainingManagerId = @tm
@@ -302,25 +303,30 @@ begin
 	end
 
 	if exists (
-		select 1 from StudentTrackIntake
-		where StudentId_FK = @stdID and TrackId_FK = @TrackId_FK and IntakeId_FK = @IntakeId_FK
+		select 1
+	from StudentTrackIntake
+	where StudentId_FK = @stdID and TrackId_FK = @TrackId_FK and IntakeId_FK = @IntakeId_FK
 	)
 		begin
-			print 'Student already assigned to this Track and Intake'
-			return
-		end
+		print 'Student already assigned to this Track and Intake'
+		return
+	end
 else
 begin
-	begin try
-		insert into StudentTrackIntake(StudentId_FK, TrackId_FK, IntakeId_FK, EnrollmentDate)
-		values (@stdID, @TrackId_FK, @IntakeId_FK, @EnrollmentDate)
+		begin try
+		insert into StudentTrackIntake
+			(StudentId_FK, TrackId_FK, IntakeId_FK, EnrollmentDate)
+		values
+			(@stdID, @TrackId_FK, @IntakeId_FK, @EnrollmentDate)
 		print 'New Student was Added in this Track'
 	end try
 	begin catch
 		print 'Error Student or Track Id or Intake Id is incorrect'
 	end catch
+	end
 end
-end
+
+------- EXEC Queries
 
 ------- EXEC Queries
 ------------------------------------------------------------------------------------
