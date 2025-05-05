@@ -1,254 +1,803 @@
-use Examination;
 
-INSERT INTO Users (FirstName, LastName, Gender, PhoneNumber, Email, Password_, Role_) VALUES
-('Ahmed', 'Ali', 'm', '01012345655', 'ahmed@example.com', '123456', 'student'),
-('Fatma', 'Hassan', 'f', '01198765438', 'fatma@example.com', '123456', 'instructor'),
-('Khaled', 'Ibrahim', 'm', '01234567894', 'khaled@example.com', '123456', 'training manager'),
-('Sara', 'Mahmoud', 'f', '01555555558', 'sara@example.com', '123456', 'student'),
-('Omar', 'Gamal', 'm', '01001122362', 'omar@example.com', '123456', 'instructor'),
-('Noha', 'Youssef', 'f', '01223345556', 'noha@example.com', '123456', 'student'),
-('Mohamed', 'Tarek', 'm', '01112243334', 'mohamed@example.com', 'Cod123456eWord', 'student'),
-('Aya', 'Sameh', 'f', '01512312314', 'aya@example.com', '123456', 'instructor'),
-('Hassan', 'Fathy', 'm', '01098761432', 'hassan@example.com', '123456', 'student'),
-('Salma', 'Adel', 'f', '01276543230', 'salma@example.com', '123456', 'training manager'),
-('Ali', 'Ahmed', 'm', '01011223342', 'ali@example.com', '123456', 'student'),
-('Hend', 'Kamal', 'f', '01155667781', 'hend@example.com', '123456', 'instructor');
+INSERT INTO Users (FirstName, LastName, Gender, PhoneNumber, Email, Password_, Role_)
+VALUES
+('Ahmed',    'Ali',           'm', '01012345678', 'ahmed.ali@gmail.com',            'pass1234',    'student'),
+('Sara',     'Hassan',        'f', '01022345678', 'sara.hassan@gmail.com',           'sara5678',    'student'),
+('Mona',     'Sayed',         'f', '01112345678', 'mona.sayed@gmail.com',            'mona1234',    'student'),
+('Omar',     'Adel',          'm', '01212345678', 'omar.adel@gmail.com',            'omar5678',    'student'),
+('Alaa',     'Tarek',         'm', '01042345678', 'alaa.tarek@gmail.com',            'alaa9876',    'student'),
+('Nadine',   'Fahmy',         'f', '01051234567', 'nadine.fahmy@gmail.com',          'nad1234',     'student'),
+('Mostafa',  'Ragab',         'm', '01061234567', 'mostafa.ragab@gmail.com',         'mos4567',     'student'),
+('Aya',      'Mahmoud',       'f', '01071234567', 'aya.mahmoud@gmail.com',          'aya5678',     'student'),
+('Ehab',     'Yasser',        'm', '01081234567', 'ehab.yasser@gmail.com',          'ehab6789',    'student'),
+('Hana',     'Khaled',        'f', '01091234567', 'hana.khaled@gmail.com',          'hana7890',    'student'),
+('Mohamed',  'Fathy',         'm', '01101234567', 'mohamed.fathy@gmail.com',        'moh1234',     'student'),
+('Laila',    'Ahmed',         'f', '01111234567', 'laila.ahmed@gmail.com',          'lai5678',     'student'),
+('Yara',     'Mostafa',       'f', '01121234567', 'yara.mostafa@gmail.com',         'yara2345',    'student'),
+('Tarek',    'Saad',          'm', '01131234567', 'tarek.saad@gmail.com',           'tar3456',     'student'),
+('Salma',    'Hussein',       'f', '01141234567', 'salma.hussein@gmail.com',        'sal4567',     'student'),
+('Adel',     'Kamel',         'm', '01151234567', 'adel.kamel@gmail.com',           'ade5678',     'student'),
+('Noor',     'Sameh',         'f', '01161234567', 'noor.sameh@gmail.com',           'noo6789',     'student'),
+('Hazem',    'Magdy',         'm', '01171234567', 'hazem.magdy@gmail.com',          'haz7890',     'student'),
+('Dina',     'Omar',          'f', '01181234567', 'dina.omar@gmail.com',            'din8901',     'student'),
+('Bassel',   'Ehab',          'm', '01191234567', 'bassel.ehab@gmail.com',          'bas9012',     'student'),
+('Leila',    'Youssef',       'f', '01010000001', 'leila.youssef@gmail.com',        'leila123',    'student'),
+('Samir',    'Hassan',        'm', '01010000002', 'samir.hassan@gmail.com',         'samir456',    'student'),
+('Dalia',    'Mostafa',       'f', '01010000003', 'dalia.mostafa@gmail.com',        'dalia789',    'student'),
+('Tamer',    'Fouad',         'm', '01010000004', 'tamer.fouad@gmail.com',          'tamer321',    'student'),
+('Amira',    'Sami',          'f', '01010000005', 'amira.sami@gmail.com',           'amira654',    'student'),
+('Bassam',   'Shawky',        'm', '01010000006', 'bassam.shawky@gmail.com',        'bassam987',   'student'),
+('Nour',     'Khaled',        'f', '01010000007', 'nour.khaled@gmail.com',          'nour123',     'student'),
+('Ibrahim',  'Saeed',         'm', '01010000008', 'ibrahim.saeed@gmail.com',        'ibra456',     'student'),
+('Fatma',    'Ayman',         'f', '01010000009', 'fatma.ayman@gmail.com',          'fatma789',    'student'),
+('Ziad',     'Gaber',         'm', '01010000010', 'ziad.gaber@gmail.com',           'ziad321',     'student'),
+('Hagar',    'Tawfik',        'f', '01010000011', 'hagar.tawfik@gmail.com',         'hagar654',    'student'),
+('Mahmoud',  'Sameer',        'm', '01010000012', 'mahmoud.sameer@gmail.com',       'mahmoud987',  'student'),
+('Yasmine',  'Osama',         'f', '01010000013', 'yasmine.osama@gmail.com',        'yasmine123',  'student'),
+('Fady',     'Hany',          'm', '01010000014', 'fady.hany@gmail.com',            'fady456',     'student'),
+('Salma',    'Refaat',        'f', '01010000015', 'salma.refaat@gmail.com',         'salma789',    'student'),
+('Marwan',   'Tariq',         'm', '01010000016', 'marwan.tariq@gmail.com',         'marwan321',   'student'),
+('Reem',     'Ibrahim',       'f', '01010000017', 'reem.ibrahim@gmail.com',         'reem654',     'student'),
+('Khaled',   'Fathi',         'm', '01010000018', 'khaled.fathi@gmail.com',         'khaled987',   'student'),
+('Noha',     'Gamal',         'f', '01010000019', 'noha.gamal@gmail.com',           'noha123',     'student'),
+('Sherif',   'Nasser',        'm', '01010000020', 'sherif.nasser@gmail.com',        'sherif456',   'student'),
+('Asmaa',    'Saber',         'f', '01010000021', 'asmaa.saber@gmail.com',          'asmaa789',    'student'),
+('Ramy',     'Atef',          'm', '01010000022', 'ramy.atef@gmail.com',            'ramy321',     'student'),
+('Ghada',    'Emad',          'f', '01010000023', 'ghada.emad@gmail.com',           'ghada654',    'student'),
+('Walid',    'Zaki',          'm', '01010000024', 'walid.zaki@gmail.com',           'walid987',    'student'),
+('Amani',    'Hossam',        'f', '01010000025', 'amani.hossam@gmail.com',         'amani123',    'student'),
+('Yahya',    'Nabil',         'm', '01010000026', 'yahya.nabil@gmail.com',          'yahya456',    'student'),
+('Nadeen',   'Ehab',          'f', '01010000027', 'nadeen.ehab@gmail.com',          'nadeen789',   'student'),
+('Hussein',  'Reda',          'm', '01010000028', 'hussein.reda@gmail.com',         'hussein321',  'student'),
+('Mai',      'Ayman',         'f', '01010000029', 'mai.ayman@gmail.com',            'mai654',      'student'),
+('Omar',     'Zaher',         'm', '01010000030', 'omar.zaher@gmail.com',           'omar987',     'student'),
+('Mostafa',  'Abdelrahman',   'm', '01100000001', 'mostafa.abdelrahman@gmail.com',  'mostafa123',  'instructor'),
+('Hanan',    'ElSayed',       'f', '01100000002', 'hanan.elsayed@gmail.com',        'hanan456',    'instructor'),
+('Sherif',   'Fathy',         'm', '01100000003', 'sherif.fathy@gmail.com',         'sherif789',   'instructor'),
+('Dina',     'Galal',         'f', '01100000004', 'dina.galal@gmail.com',           'dina321',     'instructor'),
+('Ahmed',    'Hossam',        'm', '01100000005', 'ahmed.hossam@gmail.com',         'ahmed654',    'instructor'),
+('Lamia',    'Nour',          'f', '01100000006', 'lamia.nour@gmail.com',           'lamia987',    'instructor'),
+('Yasser',   'Hany',          'm', '01100000007', 'yasser.hany@gmail.com',          'yasser123',   'instructor'),
+('Rania',    'Salah',         'f', '01100000008', 'rania.salah@gmail.com',          'rania456',    'instructor'),
+('Mohamed',  'Mekky',         'm', '01100000009', 'mohamed.mekky@gmail.com',        'mekky789',    'instructor'),
+('Salma',    'Ashraf',        'f', '01100000010', 'salma.ashraf@gmail.com',         'salma321',    'instructor'),
+('Tarek',    'Ibrahim',       'm', '01200000011', 'tarek.ibrahim@gmail.com',        'tarek123',    'instructor'),
+('Nahla',    'Younes',        'f', '01200000012', 'nahla.younes@gmail.com',         'nahla456',    'instructor'),
+('Bassam',   'Reda',          'm', '01200000013', 'bassam.reda@gmail.com',          'bassam789',   'instructor'),
+('Lobna',    'Farid',         'f', '01200000014', 'lobna.farid@gmail.com',          'lobna321',    'instructor'),
+('Hesham',   'Mostafa',       'm', '01200000015', 'hesham.mostafa@gmail.com',       'hesham654',   'instructor'),
+('Inas',     'Saber',         'f', '01200000016', 'inas.saber@gmail.com',           'inas987',     'instructor'),
+('Amr',      'Khaled',        'm', '01200000017', 'amr.khaled@gmail.com',           'amr123',      'instructor'),
+('Rasha',    'Samir',         'f', '01200000018', 'rasha.samir@gmail.com',          'rasha456',    'instructor'),
+('Hany',     'Mahmoud',       'm', '01200000019', 'hany.mahmoud@gmail.com',         'hany789',     'instructor'),
+('Maha',     'Tamer',         'f', '01200000020', 'maha.tamer@gmail.com',           'maha321',     'instructor'),
+('Nora',     'Gamal',         'f', '01222345678', 'nora.gamal@gmail.com',           'nora7890',    'training manager'),
+('Walid',    'Osman',         'm', '01522345678', 'walid.osman@gmail.com',          'walid456',    'training manager');
+GO
+
+----------------------------------------------------------------------------
+
+INSERT INTO Student (City, Street, BuildingNumber, UserId_FK)
+VALUES
+('Cairo',       'Maadi',             12,  1),
+('Giza',        'Dokki',             15,  2),
+('Alexandria',  'Stanley',           22,  3),
+('Cairo',       'Heliopolis',        5,   4),
+('Cairo',       'Nasr City',         17,  5),
+('Giza',        'Mohandessin',       9,   6),
+('Alexandria',  'Gleem',             13,  7),
+('Cairo',       'Zamalek',           7,   8),
+('Cairo',       'New Cairo',         21,  9),
+('Giza',        'Faisal',            10,  10),
+('Mansoura',    'El Gamaa',          8,   11),
+('Cairo',       'Shubra',            6,   12),
+('Tanta',       'Saad Street',       11,  13),
+('Cairo',       'Hadayek El Kobba',  14,  14),
+('Cairo',       'Sayeda Zeinab',     18,  15),
+('Alexandria',  'Roushdy',           16,  16),
+('Giza',        'Imbaba',            3,   17),
+('Cairo',       '6th October',       19,  18),
+('Alexandria',  'Sidi Gaber',        23,  19),
+('Cairo',       'El Marg',           20,  20),
+('Cairo',       'Ain Shams',         4,   21),
+('Giza',        'Haram',             6,   22),
+('Cairo',       'Ezbet El Nakhl',    13,  23),
+('Banha',       'Tahrir',            5,   24),
+('Cairo',       'Nasr City',         9,   25),
+('Zagazig',     'Gomhoria',          10,  26),
+('Cairo',       'Abbaseya',          11,  27),
+('Alexandria',  'Miami',             12,  28),
+('Cairo',       'El Sayeda Aisha',   7,   29),
+('Giza',        'Boulaq',            4,   30),
+('Cairo',       'El Mokattam',       8,   31),
+('Alexandria',  'Smouha',            15,  32),
+('Cairo',       'Dar El Salam',      10,  33),
+('Assiut',      'El Gomhoria',       16,  34),
+('Cairo',       'Zeitoun',           14,  35),
+('Alexandria',  'Agamy',             20,  36),
+('Cairo',       'Basateen',          3,   37),
+('Giza',        'Warraq',            5,   38),
+('Cairo',       'Matarya',           18,  39),
+('Mansoura',    'Talkha',            7,   40),
+('Cairo',       'Helwan',            13,  41),
+('Cairo',       'El Sayeda Nafeesa', 2,   42),
+('Cairo',       'Abbassia',          6,   43),
+('Giza',        'Omraneya',          9,   44),
+('Cairo',       'Zaitoun',           11,  45),
+('Alexandria',  'Camp Caesar',       8,   46),
+('Cairo',       'Maadi',             17,  47),
+('Cairo',       'Hadayek Maadi',     5,   48),
+('Cairo',       'Tagamoa',           10,  49),
+('Cairo',       'Katameya',          12,  50);
+GO
+
+------------------------------------------------------------------------
+
+INSERT INTO Instructor (HireDate, UserId_FK)
+VALUES
+('2022-08-15', 51),
+('2023-01-20', 52),
+('2024-05-10', 53),
+('2022-11-01', 54),
+('2023-03-12', 55),
+('2022-09-25', 56),
+('2024-02-28', 57),
+('2023-07-05', 58),
+('2023-12-01', 59),
+('2022-06-17', 60),
+('2024-01-10', 61),
+('2022-10-03', 62),
+('2023-05-14', 63),
+('2022-07-22', 64),
+('2023-09-18', 65),
+('2024-03-29', 66),
+('2023-11-08', 67),
+('2022-04-16', 68),
+('2023-06-25', 69),
+('2024-04-01', 70);
+GO
 
 
-INSERT INTO Student (City, Street, BuildingNumber, UserId_FK) VALUES
-('Cairo', 'Maadi', 12, 1),
-('Alexandria', 'Smouha', 5, 4),
-('Giza', 'Dokki', 25, 6),
-('Cairo', 'Zamalek', 8, 7),
-('Alexandria', 'Loran', 15, 9),
-('Giza', 'Haram', 30, 11)
+----------------------------------------------------------------------------
+
+INSERT INTO TrainingManager (UserId_FK)
+VALUES
+(71),
+(72);
+GO
+
+---------------------------------------------------------------------------
+
+INSERT INTO Branch (BranchName, ManagerId_FK)
+VALUES
+('Cairo', 1),
+('Alexandria', 2);
+GO
+
+---------------------------------------------------------------------------
+
+INSERT INTO Department (DeptName, BranchId_FK)
+VALUES
+('CS',         1),
+('IT',         1),
+('Networking', 2),
+('SD',         2),
+('UI/UX',      1);
+GO
+
+--------------------------------------------------------------------------
+
+INSERT INTO Track (TrackName, DeptId_FK)
+VALUES
+('Software Engineering',    1),
+('Artificial Intelligence', 1),
+('Data Science',            1),
+('Database Management',     1),
+('Virtualization',          2),
+('Business Intelligence',   2),
+('System Administration',   3),
+('Cyper Security',          3),
+('Hacking',                 3),
+('Full stack dot net',      4),
+('Full stack python',       4),
+('Full stack PHP',          4),
+('Power BI',                4),
+('Software Fundamentals',   4),
+('UX Design',               5),
+('UI Design',               5),
+('Interaction Design',      5),
+('Visual Design',           5);
+GO
+
+--------------------------------------------------------------------------
+
+INSERT INTO Intake (Description, StartDate, EndDate)
+VALUES
+('R1 Spring 2024',  '2024-03-01', '2024-06-30'),
+('R2 Summer 2024',  '2024-07-15', '2024-09-30'),
+('R3 Fall 2024',    '2024-10-15', '2025-01-31'),
+('R4 Winter 2025',  '2025-02-15', '2025-05-31'),
+('R5 Spring 2025',  '2025-03-01', '2025-06-30'),
+('R6 Summer 2025',  '2025-07-15', '2025-09-30'),
+('R7 Fall 2025 - A','2025-10-01', '2025-12-15'),
+('R8 Fall 2025 - B','2025-12-16', '2026-02-28'),
+('R9 Winter 2026 - I','2026-01-15','2026-04-30'),
+('R10 Winter 2026 - II','2026-05-01','2026-07-31'),
+('R11 Summer 2026 - I','2026-06-15','2026-08-31'),
+('R12 Summer 2026 - II','2026-09-01','2026-11-30');
+GO
+
+------------------------------------------------------------------------
+
+INSERT INTO StudentTrackIntake (StudentId_FK, TrackId_FK, IntakeId_FK, EnrollmentDate)
+VALUES
+-- Students 1–15 on Track 10
+(1,  10, 1, '2024-03-01'),
+(2,  10, 1, '2024-03-01'),
+(3,  10, 1, '2024-03-01'),
+(4,  10, 1, '2024-03-01'),
+(5,  10, 1, '2024-03-01'),
+(6,  10, 1, '2024-03-01'),
+(7,  10, 1, '2024-03-01'),
+(8,  10, 1, '2024-03-01'),
+(9,  10, 1, '2024-03-01'),
+(10, 10, 1, '2024-03-01'),
+(11, 10, 1, '2024-03-01'),
+(12, 10, 1, '2024-03-01'),
+(13, 10, 1, '2024-03-01'),
+(14, 10, 1, '2024-03-01'),
+(15, 10, 1, '2024-03-01'),
+
+-- Students 16–30 on Track 13
+(16, 13, 1, '2024-03-01'),
+(17, 13, 1, '2024-03-01'),
+(18, 13, 1, '2024-03-01'),
+(19, 13, 1, '2024-03-01'),
+(20, 13, 1, '2024-03-01'),
+(21, 13, 1, '2024-03-01'),
+(22, 13, 1, '2024-03-01'),
+(23, 13, 1, '2024-03-01'),
+(24, 13, 1, '2024-03-01'),
+(25, 13, 1, '2024-03-01'),
+(26, 13, 1, '2024-03-01'),
+(27, 13, 1, '2024-03-01'),
+(28, 13, 1, '2024-03-01'),
+(29, 13, 1, '2024-03-01'),
+(30, 13, 1, '2024-03-01'),
+
+-- Students 31–45 on Track 14
+(31, 14, 1, '2024-03-01'),
+(32, 14, 1, '2024-03-01'),
+(33, 14, 1, '2024-03-01'),
+(34, 14, 1, '2024-03-01'),
+(35, 14, 1, '2024-03-01'),
+(36, 14, 1, '2024-03-01'),
+(37, 14, 1, '2024-03-01'),
+(38, 14, 1, '2024-03-01'),
+(39, 14, 1, '2024-03-01'),
+(40, 14, 1, '2024-03-01'),
+(41, 14, 1, '2024-03-01'),
+(42, 14, 1, '2024-03-01'),
+(43, 14, 1, '2024-03-01'),
+(44, 14, 1, '2024-03-01'),
+(45, 14, 1, '2024-03-01'),
+
+-- Students 46–50 on Track 15
+(46, 15, 1, '2024-03-01'),
+(47, 15, 1, '2024-03-01'),
+(48, 15, 1, '2024-03-01'),
+(49, 15, 1, '2024-03-01'),
+(50, 15, 1, '2024-03-01');
+GO
+
+---------------------------------------------------------------------
+INSERT INTO Course (CourseName, CRS_Description, MinDegree, MaxDegree)
+VALUES
+('HTML',                'Introduction to HTML',                          20, 80),
+('CSS',                 'Basics of CSS',                                 20, 80),
+('JavaScript',          'Understanding and implementing Dynamic Pages with JS', 40,100),
+('SQL',                 'Relational databases and SQL',                   50,100),
+('C# Sharp',            'Basics of C# and Back end technlolgies',         50,100),
+('OOP',                 'Object Oriented Programming fundamentals',       30, 60),
+('Network Fundamentals','Networking protocols and technologies',          20, 40),
+('Freelancing',         'Freelancing skills',                             10, 20),
+('Communication Skills','Communication skills',                           10, 20),
+('Operating System',    'Principles of operating systems',                30, 50);
+GO
+
+--------------------------------------------------------------------------
+
+INSERT INTO StudentTakeCourse (StudentId_FK, CourseId_FK)
+VALUES
+(1, 1), (1, 2), (1, 3), (1, 4), (1, 5),
+(2, 1), (2, 2), (2, 3), (2, 4), (2, 5),
+(3, 1), (3, 2), (3, 3), (3, 4), (3, 5),
+(4, 1), (4, 2), (4, 3), (4, 4), (4, 5),
+(5, 1), (5, 2), (5, 3), (5, 4), (5, 5),
+(6, 1), (6, 2), (6, 3), (6, 4), (6, 5),
+(7, 1), (7, 2), (7, 3), (7, 4), (7, 5),
+(8, 1), (8, 2), (8, 3), (8, 4), (8, 5),
+(9, 1), (9, 2), (9, 3), (9, 4), (9, 5),
+(10, 1), (10, 2), (10, 3), (10, 4), (10, 5),
+(11, 1), (11, 2), (11, 3), (11, 4), (11, 5),
+(12, 1), (12, 2), (12, 3), (12, 4), (12, 5),
+(13, 1), (13, 2), (13, 3), (13, 4), (13, 5),
+(14, 1), (14, 2), (14, 3), (14, 4), (14, 5),
+(15, 1), (15, 2), (15, 3), (15, 4), (15, 5);
+GO
 
 
-select * from users
-where Role_ = 'training manager'
+----------------------------------------------------------------------
 
-INSERT INTO Instructor (HireDate, UserId_FK) VALUES
-('2022-08-15', 2),
-('2023-01-20', 5),
-('2024-05-10', 8),
-('2022-11-01', 12)
+INSERT INTO Question (QuestionType, QuestionText, CorrectAnswer, CourseId_FK)
+VALUES
+('mcq', 'What does HTML stand for?', 'Hyper Text Markup Language', 1),
+('T/F', 'HTML is used to define the structure of a web page.', 'True', 1),
+('mcq', 'Which tag is used to create a hyperlink in HTML?', '<a>', 1),
+('T/F', 'HTML tags are case-sensitive.', 'False', 1),
+('mcq', 'Which of the following is the correct way to start an HTML document?', '<!DOCTYPE html>', 1),
+('mcq', 'Which tag is used to define an image in HTML?', '<img>', 1),
+('T/F', 'The <br> tag is used to create a horizontal line.', 'False', 1),
+('mcq', 'Which HTML element is used for the largest heading?', '<h1>', 1),
+('T/F', 'The <p> tag is used to define a paragraph.', 'True', 1),
+('mcq', 'Which attribute specifies the destination of a link in HTML?', 'href', 1),
+('mcq', 'Which tag is used to create an unordered list in HTML?', '<ul>', 1),
+('T/F', 'The <table> tag is used to add images in HTML.', 'False', 1),
+('mcq', 'Which tag is used to define a table row in HTML?', '<tr>', 1),
+('T/F', 'The <title> tag defines the title of the document shown in the browser tab.', 'True', 1),
+('mcq', 'Which HTML tag is used to create a checkbox?', '<input type="checkbox">', 1),
+('mcq', 'Which element is used to create a drop-down list in HTML?', '<select>', 1),
+('T/F', 'The <input> tag requires a closing tag.', 'False', 1),
+('mcq', 'Which tag defines emphasized text in HTML?', '<em>', 1),
+('T/F', 'HTML5 introduced the <section> and <article> tags.', 'True', 1),
+('mcq', 'Which attribute is used to provide an alternate text for an image?', 'alt', 1),
+('mcq', 'Which property is used to change the text color in CSS?', 'color', 2),
+('T/F', 'CSS stands for Cascading Style Sheets.', 'True', 2),
+('mcq', 'Which CSS property controls the size of text?', 'font-size', 2),
+('T/F', 'The "margin" property sets the space inside the element.', 'False', 2),
+('mcq', 'Which symbol is used for class selectors in CSS?', '.', 2),
+('mcq', 'Which CSS property is used to make text bold?', 'font-weight', 2),
+('T/F', 'Inline CSS overrides external CSS.', 'True', 2),
+('mcq', 'What value of position will place an element relative to its normal position?', 'relative', 2),
+('T/F', 'The "z-index" property works with static positioning.', 'False', 2),
+('mcq', 'Which property is used to set background color in CSS?', 'background-color', 2),
+('mcq', 'Which CSS property is used to control the space between letters?', 'letter-spacing', 2),
+('T/F', 'The box-shadow property adds a shadow around an element.', 'True', 2),
+('mcq', 'Which CSS selector targets all `<div>` elements?', 'div', 2),
+('T/F', 'The `:hover` pseudo-class applies when the mouse pointer is over an element.', 'True', 2),
+('mcq', 'Which unit is relative to 1% of the viewport width?', 'vw', 2),
+('mcq', 'Which property is used to set the maximum width of an element?', 'max-width', 2),
+('T/F', 'The `display: inline-block` property allows setting width and height.', 'True', 2),
+('mcq', 'Which pseudo-element inserts content before an element’s content?', '::before', 2),
+('T/F', 'The `overflow` property controls what happens to content that exceeds its box.', 'True', 2),
+('mcq', 'Which value of the `display` property creates a flex container?', 'flex', 2),
+('mcq', 'Which keyword is used to declare a variable with function scope?', 'var', 3),
+('T/F', 'JavaScript is a statically typed language.', 'False', 3),
+('mcq', 'Which symbol is used to define an arrow function?', '=>', 3),
+('T/F', 'Arrays in JavaScript are zero-indexed.', 'True', 3),
+('mcq', 'Which method converts a JSON string to a JavaScript object?', 'JSON.parse', 3),
+('mcq', 'Which built?in object stores key?value pairs with keys of any type?', 'Map', 3),
+('mcq', 'Which keyword declares a constant in JavaScript?', 'const', 3),
+('T/F', 'The strict equality operator (`===`) performs type coercion.', 'False', 3),
+('mcq', 'Which Array method adds one or more elements to the end of an array?', 'push', 3),
+('T/F', 'The `length` property of an array is read?only.', 'False', 3),
+('mcq', 'Which Array method executes a provided function once for each array element?', 'forEach', 3),
+('T/F', 'Functions in JavaScript are first?class citizens.', 'True', 3),
+('mcq', 'What is the result of `typeof NaN`?', 'number', 3),
+('mcq', 'What is the result of `typeof null`?', 'object', 3),
+('mcq', 'Which loop structure guarantees the loop body executes at least once?', 'do...while', 3),
+('T/F', 'Adding `"use strict"` at the top of a script enables strict mode.', 'True', 3),
+('mcq', 'Which operator is often used to provide default values?', '||', 3),
+('T/F', 'An IIFE is an Immediately Invoked Function Expression.', 'True', 3),
+('mcq', 'Which Array method removes the first element from an array?', 'shift', 3),
+('T/F', 'JavaScript runs in a single?threaded environment.', 'True', 3),
+('mcq', 'Which SQL statement is used to extract data from a database?', 'SELECT', 4),
+('T/F', 'A DELETE statement without a WHERE clause removes all rows in the table.', 'True', 4),
+('mcq', 'Which clause is used to filter records in SQL?', 'WHERE', 4),
+('T/F', 'A PRIMARY KEY constraint allows duplicate values.', 'False', 4),
+('mcq', 'Which function returns the number of rows that match a specified criterion?', 'COUNT', 4),
+('mcq', 'Which clause is used to sort the result-set in SQL?', 'ORDER BY', 4),
+('mcq', 'Which keyword combines rows from two or more tables based on a related column?', 'JOIN', 4),
+('T/F', 'The GROUP BY clause is used to aggregate data across rows.', 'True', 4),
+('T/F', 'The DISTINCT keyword removes duplicate records and returns only unique values.', 'True', 4),
+('mcq', 'Which statement is used to create a new table in SQL?', 'CREATE TABLE', 4),
+('T/F', 'NULL cannot be compared using the equals (=) operator.', 'True', 4),
+('mcq', 'Which command is used to remove a table and all its data?', 'DROP TABLE', 4),
+('mcq', 'Which statement is used to insert new data into a table?', 'INSERT INTO', 4),
+('T/F', 'The UPDATE statement modifies existing data in a table.', 'True', 4),
+('mcq', 'Which keyword limits the number of records returned by a query?', 'LIMIT', 4),
+('mcq', 'Which statement modifies the structure of an existing table?', 'ALTER TABLE', 4),
+('mcq', 'Which clause filters groups after aggregation?', 'HAVING', 4),
+('T/F', 'Single-line comments in SQL start with --.', 'True', 4),
+('mcq', 'Which join returns all records when there is a match in either left or right table?', 'FULL OUTER JOIN', 4),
+('T/F', 'The HAVING clause filters records after aggregation.', 'True', 4),
+('mcq', 'Which keyword is used to define a class in C#?', 'class', 5),
+('T/F', 'C# supports multiple inheritance of classes.', 'False', 5),
+('mcq', 'Which method is the entry point of a C# console application?', 'Main', 5),
+('T/F', 'In C#, strings are immutable.', 'True', 5),
+('mcq', 'Which symbol is used to denote inheritance in a class declaration?', ':', 5),
+('mcq', 'Which namespace contains the Console class?', 'System', 5),
+('T/F', 'A struct in C# is a reference type.', 'False', 5),
+('mcq', 'Which operator provides null-coalescing functionality?', '??', 5),
+('mcq', 'Which loop structure executes the body at least once?', 'do...while', 5),
+('T/F', 'The using statement in C# is used for resource management.', 'True', 5),
+('mcq', 'Which exception is thrown when dividing by zero?', 'DivideByZeroException', 5),
+('T/F', 'Interfaces could contain implementations before C# 8.0.', 'False', 5),
+('mcq', 'Which keyword declares a read-only field?', 'readonly', 5),
+('mcq', 'Which LINQ method filters a sequence based on a predicate?', 'Where', 5),
+('T/F', 'The override keyword allows modifying virtual methods in derived classes.', 'True', 5),
+('mcq', 'Which data type represents a single Unicode character?', 'char', 5),
+('T/F', 'Delegates are type-safe function pointers.', 'True', 5),
+('mcq', 'Which symbol is used for lambda expressions?', '=>', 5),
+('mcq', 'Which exception is thrown when an array index is out of bounds?', 'IndexOutOfRangeException', 5),
+('T/F', 'The ''params'' keyword allows passing a variable number of arguments to a method.', 'True', 5);
+GO
 
+----------------------------------------------------------------------------
 
-INSERT INTO TrainingManager (UserId_FK) VALUES
-(3),
-(10)
+INSERT INTO InstructorTeachCourse (InstructorId_FK, CourseId_FK, Class, TeachYear)
+VALUES
+(1,  1, 1, '2024-01-01'),
+(2,  2, 1, '2024-01-01'),
+(3,  3, 1, '2024-01-01'),
+(4,  4, 1, '2024-01-01'),
+(5,  5, 2, '2024-01-01'),
+(6,  6, 2, '2024-01-01'),
+(7,  7, 2, '2024-01-01'),
+(8,  8, 2, '2024-01-01'),
+(9,  9, 3, '2024-01-01'),
+(10, 10, 3, '2024-01-01');
+GO
 
+--------------------------------------------------------------------------
 
-
-INSERT INTO Branch (BranchName, ManagerId_FK) VALUES
-('Cairo', 6),
-('Alexandria', 8)
-
-
-
-INSERT INTO Department (DeptName, BranchId_FK) VALUES
-('CS', 130), 
-('IT', 140)
-
-
-
-INSERT INTO Track (TrackName, DeptId_FK) VALUES
-('Web Development', 10),
-('Mobile Development', 10),
-('Data Science', 10),
-('Network Engineering', 10),
-('Project Management', 20),
-('Digital Marketing', 20),
-('Financial Accounting', 20),
-('Structural Design', 20),
-('Urban Planning', 10)
-
-
-INSERT INTO Intake (Description, StartDate, EndDate) VALUES
-('Spring 2024', '2024-03-01', '2024-06-30'),
-('Summer 2024', '2024-07-15', '2024-09-30'),
-('Fall 2024', '2024-10-15', '2025-01-31'),
-('Winter 2025', '2025-02-15', '2025-05-31'),
-('Spring 2025', '2025-03-01', '2025-06-30'),
-('Summer 2025', '2025-07-15', '2025-09-30'),
-('Fall 2025 - A', '2025-10-01', '2025-12-15'),
-('Fall 2025 - B', '2025-12-16', '2026-02-28'),
-('Winter 2026 - I', '2026-01-15', '2026-04-30'),
-('Winter 2026 - II', '2026-05-01', '2026-07-31'),
-('Summer 2026 - I', '2026-06-15', '2026-08-31'),
-('Summer 2026 - II', '2026-09-01', '2026-11-30');
-
-
-select S.StudentId from  Student S
-select S.TrackId from  Track S
-select S.IntakeId from  Intake S
-
-
-INSERT INTO StudentTrackIntake (StudentId_FK, TrackId_FK, IntakeId_FK, EnrollmentDate) VALUES
-(8, 1, 1, '2024-02-05'),
-(9, 1, 1, '2024-06-10'),
-(10, 2, 1, '2024-09-10'),
-(11, 2, 1, '2025-01-15'),
-(12, 3, 1, '2025-02-01'),
-(13, 3, 1, '2025-06-15')
-
-
-
-
-INSERT INTO Course (CourseName, CRS_Description, MinDegree, MaxDegree) VALUES
-('Programming 101', 'Introduction to programming concepts', 0, 100),
-('Web Development Basics', 'HTML, CSS, and JavaScript fundamentals', 10, 100),
-('Data Structures', 'Understanding and implementing data structures', 15, 100),
-('Database Management', 'Relational databases and SQL', 20, 100),
-('Mobile App Development', 'Building apps for Android and iOS', 25, 100),
-('Calculus I', 'Fundamentals of differential calculus', 0, 100),
-('Linear Algebra', 'Vectors, matrices, and linear transformations', 5, 100),
-('Operating Systems', 'Principles of operating systems', 15, 100),
-('Computer Networks', 'Networking protocols and technologies', 20, 100),
-('Software Engineering', 'Principles and practices of software development', 30, 100),
-('Marketing Management', 'Strategies and tactics in marketing', 10, 100),
-('Financial Accounting', 'Basic principles of financial accounting', 5, 100);
-
-
-select S.CourseId from  Course S
-
-INSERT INTO Question (QuestionType, QuestionText, CorrectAnswer, CourseId_FK) VALUES
-('mcq', 'What does HTML stand for?', 'Hyper Text Markup Language', 6),
-('T/F', 'JavaScript is a server-side scripting language.', 'False', 6),
-('text', 'What is the primary function of a relational database?', 'To store and manage structured data', 6),
-('mcq', 'Which of the following is not a data structure?', 'Algorithm', 6),
-('T/F', 'SQL is used to query and manipulate databases.', 'True', 6),
-('text', 'Name three popular mobile operating systems.', 'Android, iOS, Windows Mobile (or similar)', 6),
-('mcq', 'The derivative of x^2 is:', '2x', 6),
-('T/F', 'A matrix with the same number of rows and columns is a square matrix.', 'True', 3),
-('text', 'What is the role of the kernel in an operating system?', 'Manages system resources', 3),
-('mcq', 'Which layer of the OSI model is responsible for routing?', 'Network', 3),
-('T/F', 'Agile is a software development methodology.', 'True', 3),
-('text', 'What are the four Ps of marketing?', 'Product, Price, Place, Promotion', 3);
-
-
-select S.QuestionId , S.QuestionText from   Question S
-INSERT INTO QuestionChoice (ChoiceText, QuestionId_FK) VALUES
-('Hyper Text Transfer Protocol', 1),
-('Hyper Text Markup Language', 1),
-('High-Level Text Language', 1),
-('Hyperlink and Text Management Language', 1),
-('True', 2),
-('False', 2),
-('Stack', 3),
-('Queue', 3),
-('Tree', 3),
-('Algorithm', 3);
-
-
-INSERT INTO Exam (ExamType, StartTime, EndTime, TotalTime, InstructorId_FK) VALUES
-('exam', '2025-05-10 10:00:00', '2025-05-10 11:00:00', 60, 120),
-('corrective', '2025-05-15 14:00:00', '2025-05-15 14:30:00', 30, 120),
-('exam', '2025-06-05 09:00:00', '2025-06-05 10:30:00', 90, 122),
-('corrective', '2025-06-12 11:00:00', '2025-06-12 11:45:00', 45, 122),
-('exam', '2025-07-01 13:00:00', '2025-07-01 14:15:00', 75, 124),
-('corrective', '2025-07-08 15:00:00', '2025-07-08 15:30:00', 30, 124),
-('exam', '2025-08-03 16:00:00', '2025-08-03 17:00:00', 60, 126),
-('corrective', '2025-08-10 10:30:00', '2025-08-10 11:15:00', 45, 126),
-('exam', '2025-09-15 12:00:00', '2025-09-15 13:30:00', 90, 128),
-('corrective', '2025-09-22 14:30:00', '2025-09-22 15:00:00', 30, 128),
-('exam', '2025-10-20 11:30:00', '2025-10-20 12:45:00', 75, 130),
-('corrective', '2025-10-27 09:30:00', '2025-10-27 10:00:00', 30, 130);
-
-
-select StudentId
-from Student
-
-select CourseId
-from Course
-
-INSERT INTO StudentTakeCourse (StudentId_FK, CourseId_FK) VALUES
-(8, 6),
-(8, 9),
-(8, 3),
-(9, 6),
-(9, 9),
-(9, 3),
-(10, 6),
-(10, 9),
+INSERT INTO TrackCourse (TrackId_FK, CourseId_FK)
+VALUES
+(10, 1),
+(10, 2),
 (10, 3),
-(11, 6),
-(11, 9),
-(11, 3);
+(10, 4),
+(10, 5),
+(10, 6),
+(10, 7),
+(10, 8),
+(10, 9),
+(10, 10),
+(13, 4),
+(13, 7),
+(13, 8),
+(13, 9),
+(13, 10);
+GO
 
-select i.InstructorId
-from Instructor i
+----------------------------------------------------------------------
 
-select CourseId
-from Course
+INSERT INTO QuestionChoice (ChoiceText, QuestionId_FK)
+VALUES
+('#', 25),
+('#div', 33),
+('%', 35),
+('&&', 57),
+('&?', 88),
+('*', 25),
+('*', 33),
+('->', 43),
+('->', 98),
+('.', 25),
+('.div', 33),
+(':', 85),
+('::', 98),
+('::after', 38),
+('::before', 38),
+(':after', 38),
+(':before', 38),
+('<!DOCTYPE html>', 5),
+('<-', 98),
+('<a>', 3),
+('<check>', 15),
+('<checkbox>', 15),
+('<doc html>', 5),
+('<dropdown>', 16),
+('<em>', 18),
+('<h1>', 8),
+('<h3>', 8),
+('<h6>', 8),
+('<heading>', 8),
+('<href>', 3),
+('<html version="5.0">', 5),
+('<hyperlink>', 3),
+('<i>', 18),
+('<image>', 6),
+('<img>', 6),
+('<input type="checkbox">', 15),
+('<input type="radio">', 15),
+('<italic>', 18),
+('<li>', 11),
+('<link>', 3),
+('<list>', 11),
+('<menu>', 16),
+('<ol>', 11),
+('<option>', 16),
+('<pic>', 6),
+('<row>', 13),
+('<select>', 16),
+('<src>', 6),
+('<start html>', 5),
+('<strong>', 18),
+('<table>', 13),
+('<td>', 13),
+('<tr>', 13),
+('<ul>', 11),
+('==>', 43),
+('=>', 43),
+('=>', 98),
+('=>=', 43),
+('? :', 57),
+('?:', 88),
+('??', 57),
+('??', 88),
+('@', 25),
+('||', 57),
+('||', 88),
+('absolute', 28),
+('ADD TO', 73),
+('alt', 20),
+('ALTER TABLE', 76),
+('ArgumentOutOfRangeException', 99),
+('ArithmeticException', 91),
+('AVG', 65),
+('background', 30),
+('background-color', 30),
+('bgcolor', 30),
+('block', 40),
+('bold', 26),
+('byte', 96),
+('CHANGE TABLE', 76),
+('char', 96),
+('class', 81),
+('CLEAR TABLE', 72),
+('color', 21),
+('color', 30),
+('const', 41),
+('const', 47),
+('const', 93),
+('COUNT', 65),
+('CREATE RECORD', 73),
+('CREATE TABLE', 70),
+('DELETE', 61),
+(N'DELETE TABLE', 72),
+(N'description', 20),
+(N'div', 33),
+(N'DivideByZeroException', 91),
+(N'do...while', 55),
+(N'do...while', 89),
+(N'DROP TABLE', 72),
+(N'em', 35),
+(N'Entry', 83),
+(N'extends', 85),
+(N'False', 2),
+(N'False', 4),
+(N'False', 7),
+(N'False', 9),
+(N'False', 12),
+(N'False', 14),
+(N'False', 17),
+(N'False', 19),
+(N'False', 22),
+(N'False', 24),
+(N'False', 27),
+(N'False', 29),
+(N'False', 32),
+(N'False', 34),
+(N'False', 37),
+(N'False', 39),
+(N'False', 42),
+(N'False', 44),
+(N'False', 48),
+(N'False', 50),
+(N'False', 52),
+(N'False', 56),
+(N'False', 58),
+(N'False', 60),
+(N'False', 62),
+(N'False', 64),
+(N'False', 68),
+(N'False', 69),
+(N'False', 71),
+(N'False', 74),
+(N'False', 78),
+('False', 80),
+('False', 82),
+('False', 84),
+('False', 87),
+('False', 90),
+('False', 92),
+('False', 95),
+('False', 97),
+('False', 100),
+('filter', 51),
+('Filter', 94),
+('FILTER BY', 66),
+('Find', 94),
+('fixed', 28),
+('flex', 40),
+('font-color', 21),
+('font-size', 23),
+('font-style', 23),
+('font-style', 26),
+('font-weight', 26),
+('for', 55),
+('for', 89),
+('for...of', 55),
+('forEach', 51),
+('foreach', 89),
+('foreground', 21),
+('FULL OUTER JOIN', 79),
+('function', 41),
+('get-only', 93),
+('grid', 40),
+('GROUP BY', 63),
+('GROUP BY', 66),
+('GROUP BY', 77),
+('HAVING', 63),
+('HAVING', 77),
+('height', 36),
+('High Text Machine Language', 1),
+('Home Tool Markup Language', 1),
+('href', 10),
+('Hyper Text Markup Language', 1),
+('Hyperlinks and Text Markup Language', 1),
+('implements', 85),
+('IndexOutOfRangeException', 99),
+('inherit', 85),
+('Init', 83),
+('inline', 40),
+('INNER JOIN', 79),
+('INSERT', 61),
+('INSERT INTO', 73),
+('INSERT TABLE', 70),
+('int', 96),
+('interface', 81),
+('InvalidOperationException', 91),
+('JOIN', 67),
+('JSON.parse', 45),
+('JSON.stringify', 45),
+('LEFT JOIN', 79),
+('let', 41),
+('let', 47),
+('letter-spacing', 31),
+('LIMIT', 75),
+('line-height', 31),
+('link', 10),
+('LINK', 67),
+('Main', 83),
+('MAKE TABLE', 70),
+('Map', 46),
+('map', 51),
+('MAX', 65),
+('MAX', 75),
+('max-width', 36),
+('MERGE', 67),
+('Microsoft', 86),
+('min-width', 36),
+('MODIFY TABLE', 76),
+('NaN', 53),
+('NEW RECORD', 73),
+('NEW TABLE', 70),
+('null', 54),
+('NullReferenceException', 91),
+('NullReferenceException', 99),
+('number', 53),
+('number', 54),
+('Object', 46),
+('object', 53),
+('object', 54),
+('object', 81),
+('OFFSET', 75),
+('ORDER BY', 63),
+('ORDER BY', 66),
+('ORDER BY', 77),
+('OutOfMemoryException', 99),
+('parseJSON', 45),
+('pop', 49),
+('pop', 59),
+('push', 49),
+('push', 59),
+('px', 35),
+('readonly', 93),
+('reduce', 51),
+('relative', 28),
+('REMOVE TABLE', 72),
+('RIGHT JOIN', 79),
+('SELECT', 61),
+('Select', 94),
+('Set', 46),
+('shift', 49),
+('shift', 59),
+('SORT BY', 66),
+('src', 10),
+('src', 20),
+('Start', 83),
+('static', 28),
+('static', 47),
+('static', 93),
+('string', 96),
+('stringifyJSON', 45),
+('struct', 81),
+('SUM', 65),
+('System', 86),
+('System.IO', 86),
+('System.Text', 86),
+('text-color', 21),
+('text-indent', 31),
+('text-size', 23),
+('text-style', 23),
+('text-weight', 26),
+('title', 20),
+('TOP', 75),
+('True', 2),
+('True', 4),
+('True', 7),
+('True', 9),
+('True', 12),
+('True', 14),
+('True', 17),
+('True', 19),
+('True', 22),
+('True', 24),
+('True', 27),
+('True', 29),
+('True', 32),
+('True', 34),
+('True', 37),
+('True', 39),
+('True', 42),
+('True', 44),
+('True', 48),
+('True', 50),
+('True', 52),
+('True', 56),
+('True', 58),
+('True', 60),
+('True', 62),
+('True', 64),
+('True', 68),
+('True', 69),
+('True', 71),
+('True', 74),
+('True', 78),
+('True', 80),
+('True', 82),
+('True', 84),
+('True', 87),
+('True', 90),
+('True', 92),
+('True', 95),
+('True', 97),
+('True', 100),
+('undefined', 53),
+('undefined', 54),
+('UNION', 67),
+('unshift', 49),
+('unshift', 59),
+('UPDATE', 61),
+('UPDATE TABLE', 76),
+('url', 10),
+('var', 41),
+('var', 47),
+('vw', 35),
+('WeakMap', 46),
+('WHERE', 63),
+('WHERE', 77),
+('Where', 94),
+('while', 55),
+('while', 89),
+('width', 36),
+('word-spacing', 31);
 
-INSERT INTO InstructorTeachCourse (InstructorId_FK, CourseId_FK, Class, TeachYear) VALUES
-(10, 6, 1, '2024-01-01'),
-(12, 9, 1, '2024-01-01'),
-(14, 3, 2, '2024-01-01'),
-(16, 4, 1, '2024-01-01')
 
+---------------------------------------------------------------------------
 
-select i.TrackId
-from Track i
-
-select CourseId
-from Course
-
-INSERT INTO TrackCourse (TrackId_FK, CourseId_FK) VALUES
-(1, 6),
-(1, 9),
-(1, 3),
-(3, 6),
-(3, 4),
-(3, 3),
-(4, 6),
-(4, 9),
-(4,4);
-
-
-
-INSERT INTO StudentAnswer (StudentId_FK, QuestionId_FK, ExamId_FK, StudentAnswer) VALUES
-(71, 11, 30, 'The answer provided by the student for question 11 in exam 120'),
-(74, 12, 32, 'The answer provided by the student for question 12 in exam 120'),
-(76, 13, 34, 'The answer provided by the student for question 13 in exam 122');
-
-INSERT INTO StudentExam (StudentId_FK, ExamId_FK, ExamTotalResult) VALUES
-(71, 30, 75),
-(74, 32, 40),
-(76, 34, 82);
-
--- ExamQuestion table data
--- Linking questions to exams and defining the degree of each question
-INSERT INTO ExamQuestion (QuestionId_FK, ExamId_FK, QusetionDegree) VALUES
-(11, 120, 10),
-(12, 120, 15),
-(13, 122, 20),
-(14, 122, 12);
-
-
-INSERT INTO TrackCourse (TrackId_FK, CourseId_FK) VALUES
-(13, 23),
-(14, 24),
-(15, 25),
-(16, 26),
-(17, 27),
-(18, 28),
-(19, 29),
-(20, 30),
-(21, 31),
-(22, 32);
-
-
-ALTER TABLE Branch
-ADD CONSTRAINT DEF_BranchName
-check (BranchName in (
-'Alexandria','Aswan','Asyut','Beheira','Beni Suef',
-'Cairo','Dakahlia','Damietta','Fayoum','Gharbia',
-'Giza','Ismailia','Kafr El Sheikh','Luxor','Matrouh',
-'Minya','Monufia','New Valley','North Sinai','Port Said',
-'Qalyubia','Qena','Red Sea','Sharqia','Assuit','Sohag',
-'South Sinai','Suez'));
 
 
 
