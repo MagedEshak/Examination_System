@@ -14,7 +14,7 @@ END
 
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
-
+go
 /*	TO KNOW COURSE NAME BY QUESTION ID */
 CREATE OR ALTER FUNCTION GetCourseNameByQuestionID(@QuestionId INT)
 RETURNS VARCHAR(20)
@@ -31,7 +31,7 @@ BEGIN
 END
 
 -----------------------------------------------------------------------
------------------------------------------------------------------------
+go
 
 /*	Function TO KNOW COURSE NAME BY EXAM ID */
 CREATE OR ALTER FUNCTION GetCourseNameByExamID(@ExamId INT)
@@ -52,7 +52,7 @@ END
  
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
-
+go
 
 /*
 	Creating View To Display All Students Exams Results
@@ -60,7 +60,7 @@ END
 	- this view should be for instructor only
 */
 select * from view_StudentResults
-
+go
 CREATE OR ALTER VIEW view_StudentResults
 AS
 SELECT  SE.StudentId_FK,
@@ -82,6 +82,7 @@ WHERE SE.ExamId_FK = E.ExamId
 	-  course name , student result , total result , status
 	- this view should be for Student
 */
+go
 CREATE OR ALTER Proc sp_StudentResults (@StudentId int)
 AS
 BEGIN
@@ -99,6 +100,7 @@ EXEC sp_StudentResults 1
 	this proc to update StudentAnswer table by answers from student
 	it takes student id, exam id, and table has (ques no, st answer)
 */
+go
 CREATE OR ALTER PROCEDURE UpdateStudentAnswers
     @StudentId INT,
 	@ExamId INT,

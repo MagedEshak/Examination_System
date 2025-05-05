@@ -1,8 +1,9 @@
-CREATE OR ALTER PROCEDURE dbo.GetEligibleStudentsForExam 
-   @ExamID  INT
+CREATE OR ALTER PROCEDURE dbo.GetEligibleStudentsForExam
+    @ExamID  INT
 AS
 BEGIN
-	select * from dbo.fn_GetEligibleStudentsForExam(@ExamID)
+    select *
+    from dbo.fn_GetEligibleStudentsForExam(@ExamID)
 END;
 GO
 
@@ -38,33 +39,36 @@ BEGIN
     WHERE E.ExamId = @ExamID;
 
     -- Get Course Name associated with the exam
-    SELECT TOP 1 @CourseName = C.CourseName
+    SELECT TOP 1
+        @CourseName = C.CourseName
     FROM Instructor I
-    JOIN Exam E ON E.InstructorId_FK = I.InstructorId
-    JOIN ExamQuestion EQ ON EQ.ExamId_FK = E.ExamId
-    JOIN Question Q ON Q.QuestionId = EQ.QuestionId_FK
-    JOIN Course C ON C.CourseId = Q.CourseId_FK
+        JOIN Exam E ON E.InstructorId_FK = I.InstructorId
+        JOIN ExamQuestion EQ ON EQ.ExamId_FK = E.ExamId
+        JOIN Question Q ON Q.QuestionId = EQ.QuestionId_FK
+        JOIN Course C ON C.CourseId = Q.CourseId_FK
     WHERE I.InstructorId = @InstructorId;
 
     -- Insert eligible students based on exam type
     IF (@ExamType = 'exam')
     BEGIN
-        INSERT INTO @StudentIdsTable (StudentId)
+        INSERT INTO @StudentIdsTable
+            (StudentId)
         SELECT DISTINCT s.StudentId
         FROM Exam e
-        INNER JOIN InstructorTeachCourse itc ON e.InstructorId_FK = itc.InstructorId_FK
-        INNER JOIN StudentTakeCourse stc ON itc.CourseId_FK = stc.CourseId_FK
-        INNER JOIN Student s ON stc.StudentId_FK = s.StudentId
+            INNER JOIN InstructorTeachCourse itc ON e.InstructorId_FK = itc.InstructorId_FK
+            INNER JOIN StudentTakeCourse stc ON itc.CourseId_FK = stc.CourseId_FK
+            INNER JOIN Student s ON stc.StudentId_FK = s.StudentId
         WHERE e.ExamId = @ExamID;
     END
 	-- corrective
     ELSE
     BEGIN
-        INSERT INTO @StudentIdsTable (StudentId)
+        INSERT INTO @StudentIdsTable
+            (StudentId)
         SELECT StudentId_FK
         FROM view_StudentResults SR
         WHERE SR.Status = 'FAILED'
-          AND SR.Course = @CourseName;
+            AND SR.Course = @CourseName;
     END
 
     RETURN;
@@ -72,103 +76,112 @@ END;
 
 GO
 
- ------------ SP to Create new Branch ----------------------------
+------------ SP to Create new Branch ----------------------------
 
 create or alter proc SP_CreateBranch
-@userID  int,
-@BranchName varchar(20)
+    @userID  int,
+    @BranchName varchar(20)
 as
 begin
-declare @tm int
-declare @trainingManagerId int
+    declare @tm int
+    declare @trainingManagerId int
 
-exec SP_GetTMId_afterCheck @userID , @tm output
+    exec SP_GetTMId_afterCheck @userID , @tm output
 
-	if exists
+    if exists
 		(
-			select 1 from TrainingManager 
-			where ManagerId = @tm
+			select 1
+    from TrainingManager
+    where ManagerId = @tm
 		)
 		begin
-			set @trainingManagerId = @tm
-		end
+        set @trainingManagerId = @tm
+    end
 
 	else
 		begin
-			 print 'Training Manager not found'
-            return
-		end
+        print 'Training Manager not found'
+        return
+    end
 
-	
 
-	if exists
+
+    if exists
 			(
-				select 1 from Branch
-				where BranchName = @BranchName
+				select 1
+    from Branch
+    where BranchName = @BranchName
 			)
 			begin
-				print 'Branch Name Found'
-			end
+        print 'Branch Name Found'
+    end
 
 	else
 		begin
-				begin try
-				insert into Branch (BranchName, ManagerId_FK)
-							values (@BranchName,@trainingManagerId)
+        begin try
+				insert into Branch
+            (BranchName, ManagerId_FK)
+        values
+            (@BranchName, @trainingManagerId)
 							print 'Branch Created'
 				end try
 
 				begin catch
 						print 'Enter Correct Branch Name'
 				end catch
-			
-				
-		end	
+
+
+    end
 end
 
 GO
- --------------------------------------------------------------------
- /* Views*/
- --------------------------------------------------------------------
- select * from InstructorExam_v
-
- create OR ALTER view InstructorExam_v
+--------------------------------------------------------------------
+/* Views*/
+--------------------------------------------------------------------
+select *
+from InstructorExam_v
+go
+create OR ALTER view InstructorExam_v
 as
-select DISTINCT concat(U.FirstName,' ', U.LastName) as 'Instructor Name',
-C.CourseName, E.ExamType
+    select DISTINCT concat(U.FirstName,' ', U.LastName) as 'Instructor Name',
+        C.CourseName, E.ExamType
 
-from Exam E
+    from Exam E
 
-join Instructor I on E.InstructorId_FK=I.InstructorId
-join Users U on I.UserId_FK=U.UserId
-join ExamQuestion EQ on EQ.ExamId_FK=E.ExamId
-join Question Q on EQ.QuestionId_FK=Q.QuestionId
-join Course C on Q.CourseId_FK=C.CourseId
-where I.InstructorId =E.InstructorId_FK
+        join Instructor I on E.InstructorId_FK=I.InstructorId
+        join Users U on I.UserId_FK=U.UserId
+        join ExamQuestion EQ on EQ.ExamId_FK=E.ExamId
+        join Question Q on EQ.QuestionId_FK=Q.QuestionId
+        join Course C on Q.CourseId_FK=C.CourseId
+    where I.InstructorId =E.InstructorId_FK
 
-select * from InstructorExam_v 
+select *
+from InstructorExam_v 
 
 --------------------------------------------------------------
 
 go
 
-select * from StudentExam_v
+select *
+from StudentExam_v
 
-create view StudentExam_v
+go
+
+create or alter view StudentExam_v
 as
-select
-  concat(U.FirstName,' ', U.LastName) as 'Student Name',
-  C.CourseName, E.ExamType,SE.ExamTotalResult
-from StudentExam SE
+    select
+        concat(U.FirstName,' ', U.LastName) as 'Student Name',
+        C.CourseName, E.ExamType, SE.ExamTotalResult
+    from StudentExam SE
 
-join Student S on SE.StudentId_FK=S.StudentId
-join Users U on S.UserId_FK=U.UserId
-join Exam E on SE.ExamId_FK= E.ExamId
-join Course C on E.ExamId in(
+        join Student S on SE.StudentId_FK=S.StudentId
+        join Users U on S.UserId_FK=U.UserId
+        join Exam E on SE.ExamId_FK= E.ExamId
+        join Course C on E.ExamId in(
     select ExamId_FK
-    from ExamQuestion EQ
-    join Question Q on EQ.QuestionId_FK = Q.QuestionId
-    where Q.CourseId_FK = C.CourseId
+        from ExamQuestion EQ
+            join Question Q on EQ.QuestionId_FK = Q.QuestionId
+        where Q.CourseId_FK = C.CourseId
 	)
 
 
@@ -177,4 +190,5 @@ join Course C on E.ExamId in(
 ------- exec SP_CreateBranch
 exec SP_CreateBranch 3,430,'Sharqia'
 
-select * from Branch
+select *
+from Branch
