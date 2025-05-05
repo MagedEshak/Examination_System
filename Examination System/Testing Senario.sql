@@ -1,9 +1,7 @@
 ---------------------------------------------
+
 -- testing senario
-delete from StudentAnswer
-delete from StudentExam
-delete from ExamQuestion
-delete from Exam
+
 
 
 
@@ -12,13 +10,13 @@ delete from Exam
 EXEC GetCourseQuestions 1
 
 
--- Then he insert new exam in Exam , ExamQuestion
+-- Then he insert new exam in Exam , ExamQuestion   -- manual
 EXEC AddExamWithQuestions
   @CourseID            = 1,
   @InstructorID        = 1,
-  @ExamType            = 'exam',
-  @StartTime           = '2025-05-02 16:00:00',
-  @EndTime             = '2025-05-04 23:59:00',
+  @ExamType            = 'corrective',
+  @StartTime           = '2025-05-05 16:00:00',
+  @EndTime             = '2025-05-05 18:00:00',
   @Mode                = 'Manual',
   @ManualQuestionList  = '1=10,2=10,3=10,4=10,5=10';
   -- exam id = 39
@@ -31,10 +29,10 @@ where stk.CourseId_FK = 2
 */
 
 -- show eligable students for this exam 
-EXEC dbo.GetEligibleStudentsForExam 2;
+EXEC dbo.GetEligibleStudentsForExam 4;
 
 -- determine student ids to enter this exam
-EXEC AssignStudentsToExam 2, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15'
+EXEC AssignStudentsToExam 3, '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15'
 
 select * from 
 Question Q , QuestionChoice QC
@@ -44,21 +42,27 @@ And QC.QuestionId_FK = Q.QuestionId
 -- students open exam
 EXEC GetStudentExamSchedule 1
 
-EXEC OpenExam 2 
+EXEC OpenExam 3 
 
 
 -------------------------------------------------
 -- students 1 submit answers
 --						 St_ID   Exam_ID   Q.No   Answer
-EXEC UpdateStudentAnswers  1,	   2,		2,   'True'
-EXEC UpdateStudentAnswers  1,	   2,		4,   'False' 
-EXEC UpdateStudentAnswers  1,	   2,		5,   '<!DOCTYPE html>' 
-EXEC UpdateStudentAnswers  1,	   2,		1,   'Hyper Text Markup Language' 
-EXEC UpdateStudentAnswers  1,	   2,		3,   '<a>' 
+EXEC UpdateStudentAnswers  1,	   3,		2,   'True'
+EXEC UpdateStudentAnswers  1,	   3,		4,   'False' 
+EXEC UpdateStudentAnswers  1,	   3,		5,   '<!DOCTYPE html>' 
+EXEC UpdateStudentAnswers  1,	   3,		1,   'Hyper Text Markup Language' 
+EXEC UpdateStudentAnswers  1,	   3,		3,   '<a>' 
+
+EXEC UpdateStudentAnswers  2,	   3,		2,   'False'
+EXEC UpdateStudentAnswers  2,	   3,		4,   'True' 
+EXEC UpdateStudentAnswers  2,	   3,		5,   '<!DOCTYPE html>' 
+EXEC UpdateStudentAnswers  2,	   3,		1,   'Hyper Text Markup Language' 
+EXEC UpdateStudentAnswers  2,	   3,		3,   'cc' 
 
 -- SHOW STUDENT RESULT
 --                      St_ID
-Exec sp_StudentResults   1
+Exec sp_StudentResults   2
 
 ------------------------------------------------------------------------------
 
@@ -117,37 +121,45 @@ Exec sp_StudentResults   1
 
 --------------------------------------------------------------------------
 
+
+
+
 ---- Training Manager Tasks
--- Creating Branch
+
+-- create new training manager
 
 EXEC SP_InsertNewTrainingManager 
-@userID = 35,
 @fName = 'Khaled',
 @lName = 'Moustafa',
 @gender = 'm',
-@PhoneNumber = '01150250947',
-@email = 'ahmKhalcced.ali@gmail.com',
+@PhoneNumber = '01150250978',
+@email = 'ahmKehalcced.al@gmail.com',
 @password = '123456789'
 
 select * from TrainingManager
 
 
 select * from branch 
+select * from TrainingManager
 
+-- Creating Branch
+--          manager id in user table
 --                    Man_ID       BranchName
-EXEC SP_CreateBranch   74    ,		'Minya'
+EXEC SP_CreateBranch   76    ,		'Minya'
 
 
+select * from branch 
 -- Updating Branch
+--          manager id in user table
 --                   UserID    BranchID
 exec SP_UpdateBranch   74,      8,			'Asyut'
 
 ----------------------------------------------------------
 -- inserting new Student
 exec SP_InsertNewStd
-@userID = 74,
-@fName = 'Ali',
-@lName = 'Gamal',
+@userID = 74,              -- manager id in user table
+@fName = 'Ahmed',
+@lName = 'Belal',
 @gender = 'm',
 @PhoneNumber = '01234565788',
 @email = 'aliG@gmail.com',
@@ -159,11 +171,12 @@ exec SP_InsertNewStd
 select * from Users
 select * from Student
 
-
+select * from Users
 -- updating Student
+
 exec SP_UpdateStudent
-@TManagerID = 74,
-@UserStudentID = 75,
+@TManagerID = 74,        -- manager id in user table
+@UserStudentID = 75,     -- student id in user table
 @stdId = 51,
 @PhoneNumber = '01234565788',
 @email = 'aliG@gmail.com',
