@@ -277,6 +277,15 @@ create table ExamQuestion
 
 
 
+ALTER TABLE Branch
+ADD CONSTRAINT DEF_BranchName
+check (BranchName in (
+'Alexandria','Aswan','Asyut','Beheira','Beni Suef',
+'Cairo','Dakahlia','Damietta','Fayoum','Gharbia',
+'Giza','Ismailia','Kafr El Sheikh','Luxor','Matrouh',
+'Minya','Monufia','New Valley','North Sinai','Port Said',
+'Qalyubia','Qena','Red Sea','Sharqia','Assuit','Sohag',
+'South Sinai','Suez'));
 
 
 
